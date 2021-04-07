@@ -1,9 +1,12 @@
 package iFoodProject;
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+
 
 /**
  * 
@@ -19,24 +22,40 @@ public class UsersTable {
 		PreparedStatement stmt = null;
 		ResultSet rst = null;
 //		System.out.print("All Good1");
+//		 table and checking if the entered email matches any
+		
 		try {
-//			Selecting data from database table and checking if the entered email matches any
-			stmt =conn.prepareStatement("Select * from register where email = ?");
-			stmt.setString(1, email);
+			DatabaseMetaData dbm = conn.getMetaData();
+			ResultSet tables = dbm.getTables(null, null, "register", null);
+			if (tables.next()) {
+//				Selecting data from database table and checking if the entered email matches any
+				stmt =conn.prepareStatement("Select * from register where email = ?");
+				stmt.setString(1, email);
 			
-//			Storing the result
-			rst = stmt.executeQuery();		
+//				Storing the result
+				rst = stmt.executeQuery();		
 			
-//			if result exists Than
-			if(rst.next()) {
+//				if result exists Than
+				if(rst.next()) {
 				
 //				checking if the ResultSet has the same email address
-				if(rst.getString("email").contentEquals(email)){
-					return true;	//if yes then sending True as there is a match				
+					if(rst.getString("email").contentEquals(email)){
+						return true;	//if yes then sending True as there is a match				
+					}else {
+					return false; //no existing mail
+					}
 				}else {
-					return false; //else false
+					return false; //no resulted fetched
 				}
-			}else {
+			}else {//if table donot exist then creating table and returning false as email cannot exist
+				stmt =conn.prepareStatement("CREATE TABLE IF NOT EXISTS register ("
+						+"id BIGINT NOT NULL AUTO_INCREMENT,"
+						+"name VARCHAR(25),"
+						+"email VARCHAR(35),"
+						+"password VARCHAR(30),"
+						+"PRIMARY KEY(id),"
+						+"UNIQUE (email)"
+						+")");
 				return false;
 			}
 		} 
@@ -59,10 +78,9 @@ public class UsersTable {
 //	Method for User regisstration
 	public static int RegisterRecord(String username, String email, String password, Connection conn)
 	{
-		
-		PreparedStatement stmt = null;
-		
+		PreparedStatement stmt = null;	
 		try {
+			
 //			sql for data insertion
 			stmt =conn.prepareStatement("insert into register (name, email, password) values(?,?,?)");
 			stmt.setString(1, username);

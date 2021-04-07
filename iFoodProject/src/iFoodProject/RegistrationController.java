@@ -29,7 +29,7 @@ public class RegistrationController extends HttpServlet{
 		
 //			connection variable
 			Connection con = DbConnection.getDbConnection("mysql");
-			
+	
 //			if user is new that is mail donot exist
 			if(!UsersTable.existingMail(email,con)){
 				
@@ -37,6 +37,12 @@ public class RegistrationController extends HttpServlet{
 				int query_result = UsersTable.RegisterRecord(username, email, password, con);
 //				if inserted 
 				if(query_result>0) {
+//					sending email to the user for their registeration success
+					String subject ="iFood Registration Successful";
+					String message ="Your registration with iFood is successful with the credentials: \n email: "+email+" and password: "+password;
+					
+					String [] recepients =new String[]{email};
+					new SendEmailFunctionality().sendMail(recepients, recepients, subject, message);
 					response.sendRedirect("login.html");
 				}else { //else
 					response.sendRedirect("error.html");

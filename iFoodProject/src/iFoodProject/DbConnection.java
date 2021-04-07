@@ -22,10 +22,10 @@ public class DbConnection {
 		
 		else if(dbName.equalsIgnoreCase("mysql"))
 		{
-			String url = "jdbc:mysql://localhost:3306/soon";
+			String url = "jdbc:mysql://localhost:3306/iFood";
 			String user = "root";
 			String pasword = "";
-		
+			
 				Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 				conn = DriverManager.getConnection(url,user,pasword);
 			
