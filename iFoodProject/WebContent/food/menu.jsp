@@ -1,5 +1,54 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@page import= "java.io.IOException"%>
+<%@page import = "java.sql.Connection"%>
+<%@page import = "java.util.ArrayList"%>
+<%@page import = "javax.servlet.annotation.WebServlet"%>
+<%@page import = "javax.servlet.http.HttpServlet"%>
+<%@page import = "javax.servlet.http.HttpServletRequest"%>
+<%@page import = "javax.servlet.http.HttpServletResponse"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.SQLException"%>
+<%
+Connection conn = null;
+String url = "jdbc:mysql://localhost:3306/iFood";
+String user = "root";
+String pasword = "";
+
+	Class.forName("com.mysql.cj.jdbc.Driver");
+	conn = DriverManager.getConnection(url,user,pasword);
+
+	PreparedStatement stmt = null;
+	ResultSet r_bf = null;
+	ResultSet r_l = null;
+	ResultSet r_d = null;
+	
+	try {
+		stmt =conn.prepareStatement("SELECT * FROM menu WHERE token = ?");
+		stmt.setString(1,"food");
+		r_bf = stmt.executeQuery();
+		
+		stmt =conn.prepareStatement("SELECT * FROM menu WHERE token = ?");
+		stmt.setString(1,"drinks");
+		r_l = stmt.executeQuery(); 
+		
+		stmt =conn.prepareStatement("SELECT * FROM menu WHERE token = ?");
+		stmt.setString(1,"desert");
+		r_d = stmt.executeQuery(); 
+		
+		
+	} catch (SQLException e) {
+		
+		e.printStackTrace();
+	}
+
+
+%>
 <!--A Design by W3layouts
   Author: W3layout
   Author URL: http://w3layouts.com
@@ -41,40 +90,11 @@
     <!--headder-->
     
      <jsp:include page="mainTop.jsp" />
-<!--     <div class="header-outs inner_page-banner " id="home">
-      <div class="headder-top">
-        nav
-        <nav >
-          <div id="logo">
-            <h1><a href="index.html">Sapid</a></h1>
-          </div>
-          <label for="drop" class="toggle">Menu</label>
-          <input type="checkbox" id="drop">
-          <ul class="menu mt-2">
-            <li class="active"><a href="index.html">Home</a></li>
-            <li class="mx-lg-3 mx-md-2 my-md-0 my-1"><a href="about.html">About</a></li>
-            <li><a href="service.html">Services</a></li>
-            <li class="mx-lg-3 mx-md-2 my-md-0 my-1">
-              First Tier Drop Down
-              <label for="drop-2" class="toggle toogle-2">Dropdown <span class="fa fa-angle-down" aria-hidden="true"></span>
-              </label>
-              <a href="#">Dropdown <span class="fa fa-angle-down" aria-hidden="true"></span></a>
-              <input type="checkbox" id="drop-2">
-              <ul>
-                <li><a href="gallery.html" class="drop-text">Gallery</a></li>
-                <li><a href="menu.html" class="drop-text">Menu</a></li>
-                <li><a href="recipe.html" class="drop-text">Recipes</a></li>
-              </ul>
-            </li>
-            <li><a href="contact.html">Contact Us</a></li>
-          </ul>
-        </nav>
-        //nav
-      </div>
-    </div> -->
+
     <!-- //Navigation -->
     <!--//headder-->
     <!-- short -->
+    
     <div class="using-border py-3">
       <div class="inner_breadcrumb  ml-4">
         <ul class="short_ls">
@@ -99,102 +119,36 @@
           <div class="col-lg-4 col-md-4">
             <div class="wls-hours-list">
               <ul>
-                <li class="d-flex">Rigatoni Pasta<span class="time ml-auto"> $30</span></li>
-                <li class="d-flex">Soup Pasta<span class="time ml-auto">$12</span></li>
-                <li class="d-flex">Ribbon Pasta<span class="time ml-auto">$6</span></li>
-                <li class="d-flex">Tubular Pasta<span class="time ml-auto">$22</span></li>
-                <li class="d-flex">Penne Pasta<span class="time ml-auto">$15</span></li>
-                <li class="d-flex">Shaped Pasta   <span class="time ml-auto">$18</span></li>
+             <%while(r_bf.next()) { %>
+                <li class="d-flex"><%=r_bf.getString("food") %><span class="time ml-auto">$<%=r_bf.getString("price") %></span></li>
+             <%} %>
               </ul>
             </div>
           </div>
           <div class="col-lg-4 col-md-4">
             <div class="wls-hours-list">
               <ul>
-                <li class="d-flex">Rigatoni Pasta<span class="time ml-auto"> $30</span></li>
-                <li class="d-flex">Soup Pasta<span class="time ml-auto">$12</span></li>
-                <li class="d-flex">Ribbon Pasta<span class="time ml-auto">$6</span></li>
-                <li class="d-flex">Tubular Pasta<span class="time ml-auto">$22</span></li>
-                <li class="d-flex">Penne Pasta<span class="time ml-auto">$15</span></li>
-                <li class="d-flex">Shaped Pasta   <span class="time ml-auto">$18</span></li>
+                <%while(r_l.next()) { %>
+                <li class="d-flex"><%=r_l.getString("food") %><span class="time ml-auto"> $<%=r_l.getString("price") %></span></li>
+             <%} %>
               </ul>
             </div>
           </div>
-          <div class="col-lg-4 col-md-4">
+         <div class="col-lg-4 col-md-4">
             <div class="wls-hours-list">
               <ul>
-                <li class="d-flex">Rigatoni Pasta<span class="time ml-auto"> $30</span></li>
-                <li class="d-flex">Soup Pasta<span class="time ml-auto">$12</span></li>
-                <li class="d-flex">Ribbon Pasta<span class="time ml-auto">$6</span></li>
-                <li class="d-flex">Tubular Pasta<span class="time ml-auto">$22</span></li>
-                <li class="d-flex">Penne Pasta<span class="time ml-auto">$15</span></li>
-                <li class="d-flex">Shaped Pasta   <span class="time ml-auto">$18</span></li>
+                <%while(r_d.next()) { %>
+                <li class="d-flex"><%=r_d.getString("food") %><span class="time ml-auto"> $<%=r_d.getString("price") %></span></li>
+             <%} %>
               </ul>
             </div>
-          </div>
+          </div> 
         </div>
       </div>
     </section>
     <!--//menu-order -->
     <!-- footer -->
-    <footer class="py-lg-3 py-md-2 py-sm-3 py-2">
-      <div class="container py-lg-4 py-md-4 py-sm-3 py-3">
-        <div class="row">
-          <div class="col-lg-3 col-md-6 col-sm-6 footer-bottom-txt">
-            <h2><a href="index.jsp">Sapid</a></h2>
-            <p class="pt-lg-4 pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            </p>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6 footer-bottom-txt">
-            <h4>Our Timings</h4>
-            <div class="mt-3 footer-hours-list">
-              <ul>
-                <li class="d-flex">Monday-Friday<span class="time-footer ml-auto"> 9:30-18:30</span></li>
-                <li class="d-flex">Saturday <span class="time-footer ml-auto">10:30-14:30</span></li>
-                <li class="d-flex">Sunday   <span class="time-footer ml-auto">     closed</span></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6 footer-bottom-txt">
-            <h4>Our Address</h4>
-            <div class="mt-3 footer-top">
-              <p><span>Address</span> :Melbourne St,South <br>Birbane 4101 Austraila.</p>
-              <p class="pt-2"> <span> Phone</span> :+(000) 123 4565 32</p>
-              <p class="pt-2"><span>Email</span>   :<a href="mailto:info@example.com">info@example1.com</a> 
-              </p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6 footer-bottom-txt">
-            <h4>Social Icons</h4>
-            <div class="social-icons mt-3">
-              <ul>
-                <li><a href="#"><span class="fa fa-facebook mr-lg-3 mr-2"></span></a></li>
-                <li><a href="#"><span class="fa fa-twitter mr-lg-3 mr-2"></span></a></li>
-                <li><a href="#"><span class="fa fa-rss mr-lg-3 mr-2"></span></a></li>
-                <li><a href="#"><span class="fa fa-envelope mr-lg-3 mr-2"></span></a></li>
-                <li><a href="#"><span class="fa fa-instagram mr-lg-3 mr-2"></span></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!--//footer -->
-    <!-- footer-copy-write -->
-    <div class="footer-copy-write py-lg-3 py-md-2 py-sm-3 py-2">
-      <div class="container pb-lg-3 pb-2">
-        <div class="bottem-txt-footer text-center pt-md-4 pt-3">
-          <p> 
-            © 2019 Sapid. All Rights Reserved | Design by <a href="http://www.W3Layouts.com" target="_blank">W3Layouts</a>
-          </p>
-        </div>
-        <!-- move icon -->
-        <div class="text-center">
-          <a href="#home" class="move-top text-center mt-3"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
-        </div>
-        <!--//move icon -->
-      </div>
-    </div>
+ <jsp:include page="footer.jsp" />
     <!--//footer-copy-write -->
   </body>
 </html>

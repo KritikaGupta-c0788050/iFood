@@ -189,6 +189,38 @@ public class UsersTable {
 	}
 	
 
+//	public static Object getMenuItems(Connection conn)
+//	{
+//		
+//		PreparedStatement stmt = null;
+//		ResultSet result = null;
+//		
+//		try {
+//			stmt =conn.prepareStatement("SELECT * FROM menu");
+//			result = stmt.executeQuery();
+//			
+//			return result;
+//			
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		finally {
+//			try {
+//				stmt.close();
+//			}
+//			catch(SQLException s)
+//			{
+//				s.printStackTrace();
+//			}
+//		}
+//		return null;
+//		
+//		
+//	}
+	
+	
 	public static void deleteUsersRecord(String username, String password, String firstname, String lastname, Connection conn)
 	{
 		
@@ -251,36 +283,7 @@ public class UsersTable {
 		
 	}
 	
-	public static void getUsersRecord(String username, String password, String firstname, String lastname, Connection conn)
-	{
-		
-		PreparedStatement stmt = null;
-		
-		try {
-			stmt =conn.prepareStatement("_________________________________");
-			stmt.setString(1, " _______");
-			stmt.setString(2,"   ______________");
-			
-			
-		//
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		finally {
-			try {
-				stmt.close();
-			}
-			catch(SQLException s)
-			{
-				s.printStackTrace();
-			}
-		}
-		
-		
-	}
+	
 
 
 	

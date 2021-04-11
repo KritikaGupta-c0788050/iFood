@@ -29,7 +29,7 @@ public class DbConnection {
 				Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 				conn = DriverManager.getConnection(url,user,pasword);
 			
-				//here soon is database name, root is username and password is blank
+				//here iFood is database name, root is username and password is blank
 		}
 		
 		else
