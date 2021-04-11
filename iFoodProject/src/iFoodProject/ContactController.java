@@ -4,7 +4,6 @@
 package iFoodProject;
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.ArrayList;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,29 +16,30 @@ import javax.servlet.http.HttpServletResponse;
  *
  */
 
-@WebServlet("/iFoodLogin")
-public class LoginController extends HttpServlet {
+@WebServlet("/iFoodcontact")
 
+public class ContactController extends HttpServlet {
 	/**
-	 * @param args
-	 * @throws Throwable 
+	 * 
 	 */
+	private static final long serialVersionUID = 1L;
+
 	public void doMethod(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
 		
-		//connection
+		String firstname = request.getParameter("firstname");
+		String lastname = request.getParameter("lastname");
+		String email = request.getParameter("email");
+		String phone = request.getParameter("phone");
+		String message = request.getParameter("message");
+		
+//		connection
 		Connection con = DbConnection.getDbConnection("mysql");
 		
 //		Checking if the user credentials are correct
-		Boolean permit = UsersTable.loginPermissionRecord(email, password, con);
-		if(permit) {	//if correct letting in
-			
-//			if(request.getSession().getAttribute("Slogin")==null) {
-				
-//				request.getSession().setAttribute("Slogin", email);
-				response.sendRedirect("food/index.jsp");
-//			}
+		int permit = UsersTable.contactUsData(firstname, lastname, email, phone, message, con);
+		if(permit > 0) {	//if correct letting in
+			String msg="Thank you! your message has reached us. We will contact you shortly!";
+			response.sendRedirect("food/index.jsp?msg="+msg);
 		}
 		else {	//else error page
 			response.sendRedirect("error404/error.html");
@@ -67,4 +67,3 @@ public class LoginController extends HttpServlet {
 	}
 
 }
-

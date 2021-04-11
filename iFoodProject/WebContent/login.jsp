@@ -16,26 +16,29 @@
 
     <!-- Main css -->
     <link rel="stylesheet" href="register/css/style.css">
+    <link rel="stylesheet" href="food/css/style.css">
 </head>
 <body>
-
+	
     <div class="main" style="padding: 20px 0;">
-    
+   
         <!-- Sing in  Form -->
        <section class="sign-in">
             <div class="container">
+            
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="register/images/signin-image.jpg" alt="sing up image"></figure>
-                        <a href="Register.html" class="signup-image-link">Create an account</a>
+                        <a href="Register.jsp" class="signup-image-link">Create an account</a>
                     </div>
 
                     <div class="signin-form">
+                    
                         <h2 class="form-title">Sign In</h2>
                         <form method="POST" class="register-form" id="login-form" action="iFoodLogin">
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="username" id="your_name" placeholder="Email"/>
+                                <input type="text" name="email" id="your_name" placeholder="Email"/>
                             </div>
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
@@ -114,7 +117,7 @@ form-stars-here
 //form-ends-here
 copyright
 	<div class="copyright w3-agile">
-		<p> Â© 2016 Boundary Sign in Form . All rights reserved | Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a></p>
+		<p> © 2016 Boundary Sign in Form . All rights reserved | Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a></p>
 	</div>
 	//copyright 
 </body>

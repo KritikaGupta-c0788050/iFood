@@ -43,16 +43,17 @@ public class RegistrationController extends HttpServlet{
 					
 					String [] recepients =new String[]{email};
 					new SendEmailFunctionality().sendMail(recepients, recepients, subject, message);
-					response.sendRedirect("login.html");
+					response.sendRedirect("login.jsp");
 				}else { //else
-					response.sendRedirect("error.html");
+					response.sendRedirect("error404/error.html");
 				}
 			}else {	//if mail already exists then :
-//				response.sendRedirect("login.html");
-				System.out.println("Account already exists. Please try login");
+				String msg = "Account already exists. Please try login";
+				response.sendRedirect("Register.jsp?acc="+msg);
+//				System.out.println("Account already exists. Please try login");
 			}
 		}else {
-			response.sendRedirect("Register.html");
+			response.sendRedirect("Register.jsp");
 		}
 				
 	}

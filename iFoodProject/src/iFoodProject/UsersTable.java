@@ -115,6 +115,7 @@ public class UsersTable {
 //	Method for checking login credentials of User with Database
 	public static boolean loginPermissionRecord(String usermail, String password, Connection conn)
 	{
+//		System.out.println(usermail+password);
 		PreparedStatement stmt = null;
 		ResultSet rst = null;
 //		System.out.print("All Good1");
@@ -126,7 +127,7 @@ public class UsersTable {
 			
 //			if the query has the resultset
 			if(rst.next()) {
-//				System.out.print("All Good5");
+//				System.out.print(rst.getString("email")+" "+rst.getString("password"));
 //				Matching the user's email and password with the entered mail and password
 				if(rst.getString("email").contentEquals(usermail) && rst.getString("password").contentEquals(password)){
 					return true;		//if there is a match then it sends boolean true			
@@ -153,19 +154,21 @@ public class UsersTable {
 		return false;
 	}
 	
-	public static void insertUsersRecord(String username, String password, String firstname, String lastname, Connection conn)
-	{
+	public static  int contactUsData(String firstname, String lastname, String email, String phone, String message,
+			Connection conn) {
 		
 		PreparedStatement stmt = null;
 		
 		try {
-			stmt =conn.prepareStatement("insert into login (username, password, firstname, lastname) values(?,?,?,?)");
-			stmt.setString(1, username);
-			stmt.setString(2,password);
-			stmt.setString(3, firstname);
-			stmt.setString(4, lastname);
+			stmt =conn.prepareStatement("insert into contactUs (firstname, lastname, email, phone, message) values(?,?,?,?,?)");
+			stmt.setString(1, firstname);
+			stmt.setString(2, lastname);
+			stmt.setString(3, email);
+			stmt.setString(4,phone);
+			stmt.setString(5, message);
 			
-			stmt.executeUpdate();
+			int query_status = stmt.executeUpdate();
+			return query_status;
 			
 		} catch (SQLException e) {
 			
@@ -181,7 +184,7 @@ public class UsersTable {
 				s.printStackTrace();
 			}
 		}
-		
+		return 0;
 		
 	}
 	
@@ -278,6 +281,8 @@ public class UsersTable {
 		
 		
 	}
+
+
 	
 	
 }
