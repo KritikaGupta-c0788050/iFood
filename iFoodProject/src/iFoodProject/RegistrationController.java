@@ -19,6 +19,8 @@ public class RegistrationController extends HttpServlet{
 	public void doMethod(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		String username = request.getParameter("name");
 		String email = request.getParameter("email");
+		String address = request.getParameter("address");
+		String phone = request.getParameter("phone");
 		String password = request.getParameter("pass");
 		String rePassword = request.getParameter("re_pass");
 		
@@ -34,7 +36,7 @@ public class RegistrationController extends HttpServlet{
 			if(!UsersTable.existingMail(email,con)){
 				
 //				Inserting user details in database
-				int query_result = UsersTable.RegisterRecord(username, email, password, con);
+				int query_result = UsersTable.RegisterRecord(username, email, address, phone, password, con);
 //				if inserted 
 				if(query_result>0) {
 //					sending email to the user for their registeration success
@@ -45,7 +47,7 @@ public class RegistrationController extends HttpServlet{
 					new SendEmailFunctionality().sendMail(recepients, recepients, subject, message);
 					response.sendRedirect("login.jsp");
 				}else { //else
-					response.sendRedirect("error404/error.html");
+					response.sendRedirect("error.html");
 				}
 			}else {	//if mail already exists then :
 				String msg = "Account already exists. Please try login";

@@ -39,7 +39,7 @@ public class ContactController extends HttpServlet {
 		int permit = UsersTable.contactUsData(firstname, lastname, email, phone, message, con);
 		if(permit > 0) {	//if correct letting in
 			String msg="Thank you! your message has reached us. We will contact you shortly!";
-			response.sendRedirect("food/index.jsp?msg="+msg);
+			response.sendRedirect("index.jsp?msg="+msg);
 		}
 		else {	//else error page
 			response.sendRedirect("error404/error.html");

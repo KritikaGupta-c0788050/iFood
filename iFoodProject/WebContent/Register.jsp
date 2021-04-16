@@ -9,17 +9,15 @@
     
 	<!--  Kritika Gupta C0788050-->
 	
-	
-	
     <!-- Font Icon -->
-    <link rel="stylesheet" href="register/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="static/login/fonts/material-icon/css/material-design-iconic-font.min.css">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="register/css/style.css">
+    <link rel="stylesheet" href="static/login/css/style.css">
 </head>
 <body>
 
-    <div class="main" style="padding: 20px 0;">
+    <div class="main" style="padding: 20px 0;margin-top:3%; background-image:url(static/login/images/banner.jpg);">
 
         <!-- Sign up form -->
         <section class="signup">
@@ -40,11 +38,19 @@
                         <form method="POST" class="register-form" id="register-form" action="iFoodRegister">
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="name" id="name" placeholder="Your Name"/>
+                                <input type="text" name="name" id="name" placeholder="Full Name"/>
                             </div>
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
                                 <input type="email" name="email" id="email" placeholder="Your Email"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="address"><i class="zmdi zmdi-account-box-o"></i></label>
+                                <input type="text" name="address" id="address" placeholder="Address"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone"><i class="zmdi zmdi-phone"></i></label>
+                                <input type="tel" name="phone" id="phone" placeholder="Contact Number"/>
                             </div>
                             <div class="form-group">
                                 <label for="pass"><i class="zmdi zmdi-lock"></i></label>
@@ -64,17 +70,13 @@
                                 <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
                                 <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
                             </div>
-                            <div class="form-group">
-                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
-                            </div>
-                            <div class="form-group form-button">
+                           <div class="form-group form-button">
                                 <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
                             </div>
                         </form>
                     </div>
                     <div class="signup-image">
-                        <figure><img src="register/images/signup-image.jpg" alt="sing up image"></figure>
+                        <figure><img src="static/login/images/sign.png" alt="sing up image"></figure>
                         <a href="login.jsp" class="signup-image-link">I am already member</a>
                     </div>
                 </div>
@@ -84,7 +86,7 @@
     </div>
 
     <!-- JS -->
-    <script src="register/vendor/jquery/jquery.min.js"></script>
-    <script src="register/js/main.js"></script>
+    <script src="static/login/vendor/jquery/jquery.min.js"></script>
+    <script src="static/login/js/main.js"></script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

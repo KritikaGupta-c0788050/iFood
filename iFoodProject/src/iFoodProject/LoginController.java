@@ -28,7 +28,7 @@ public class LoginController extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		//connection
+//		//connection
 		Connection con = DbConnection.getDbConnection("mysql");
 		
 //		Checking if the user credentials are correct
@@ -38,11 +38,11 @@ public class LoginController extends HttpServlet {
 //			if(request.getSession().getAttribute("Slogin")==null) {
 				
 //				request.getSession().setAttribute("Slogin", email);
-				response.sendRedirect("food/index.jsp");
+				response.sendRedirect("index.jsp");
 //			}
 		}
 		else {	//else error page
-			response.sendRedirect("error404/error.html");
+			response.sendRedirect("error.html");
 		}
 //		response.sendRedirect("index.html");
 				

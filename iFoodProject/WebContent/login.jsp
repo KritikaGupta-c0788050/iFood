@@ -12,15 +12,15 @@
 	
 	
     <!-- Font Icon -->
-    <link rel="stylesheet" href="register/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="static/login/fonts/material-icon/css/material-design-iconic-font.min.css">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="register/css/style.css">
-    <link rel="stylesheet" href="food/css/style.css">
+    <link rel="stylesheet" href="static/login/css/style.css">
+    <link rel="stylesheet" href="static/food/css/style.css">
 </head>
 <body>
 	
-    <div class="main" style="padding: 20px 0;">
+    <div class="main" style="padding: 20px 0;margin-top:8%; background-image:url(static/login/images/banner.jpg);">
    
         <!-- Sing in  Form -->
        <section class="sign-in">
@@ -28,13 +28,13 @@
             
                 <div class="signin-content">
                     <div class="signin-image">
-                        <figure><img src="register/images/signin-image.jpg" alt="sing up image"></figure>
+                        <figure><img src="static/login/images/r1.jpg" alt="sing in image"></figure>
                         <a href="Register.jsp" class="signup-image-link">Create an account</a>
                     </div>
 
                     <div class="signin-form">
                     
-                        <h2 class="form-title">Sign In</h2>
+                        <h2 class="form-title">Log In</h2>
                         <form method="POST" class="register-form" id="login-form" action="iFoodLogin">
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
@@ -43,10 +43,6 @@
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="password" id="your_pass" placeholder="Password"/>
-                            </div>
-                            <div class="form-group">
-                                <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
-                                <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
                             </div>
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
@@ -68,8 +64,8 @@
     </div>
 
     <!-- JS -->
-    <script src="register/vendor/jquery/jquery.min.js"></script>
-    <script src="register/js/main.js"></script>
+    <script src="static/login/vendor/jquery/jquery.min.js"></script>
+    <script src="static/login/js/main.js"></script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
 

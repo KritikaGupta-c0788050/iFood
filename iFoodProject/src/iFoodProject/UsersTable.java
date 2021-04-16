@@ -1,10 +1,12 @@
 package iFoodProject;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 
 
@@ -52,6 +54,8 @@ public class UsersTable {
 						+"id BIGINT NOT NULL AUTO_INCREMENT,"
 						+"name VARCHAR(25),"
 						+"email VARCHAR(35),"
+						+"address TEXT,"
+						+"phone INT(20)"
 						+"password VARCHAR(30),"
 						+"PRIMARY KEY(id),"
 						+"UNIQUE (email)"
@@ -76,16 +80,18 @@ public class UsersTable {
 	}
 	
 //	Method for User regisstration
-	public static int RegisterRecord(String username, String email, String password, Connection conn)
+	public static int RegisterRecord(String username, String email, String address, String phone, String password, Connection conn)
 	{
 		PreparedStatement stmt = null;	
 		try {
 			
 //			sql for data insertion
-			stmt =conn.prepareStatement("insert into register (name, email, password) values(?,?,?)");
+			stmt =conn.prepareStatement("insert into register (name, email, address, phone, password) values(?,?,?,?,?)");
 			stmt.setString(1, username);
 			stmt.setString(2, email);
-			stmt.setString(3,password);
+			stmt.setString(3, address);
+			stmt.setString(4, phone);
+			stmt.setString(5, password);
 		
 //			executind query
 			int query_success = stmt.executeUpdate();
@@ -189,36 +195,44 @@ public class UsersTable {
 	}
 	
 
-//	public static Object getMenuItems(Connection conn)
-//	{
-//		
-//		PreparedStatement stmt = null;
-//		ResultSet result = null;
-//		
-//		try {
-//			stmt =conn.prepareStatement("SELECT * FROM menu");
-//			result = stmt.executeQuery();
-//			
-//			return result;
-//			
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//		finally {
-//			try {
-//				stmt.close();
-//			}
-//			catch(SQLException s)
-//			{
-//				s.printStackTrace();
-//			}
-//		}
-//		return null;
-//		
-//		
-//	}
+	public static ArrayList<Food> getFoodItems(Connection conn)
+	{
+		
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		ArrayList<Food> food_list = new ArrayList<Food>();
+		try {
+			stmt =conn.prepareStatement("SELECT * FROM menu WHERE token = ?");
+			stmt.setString(1, "food");
+			result = stmt.executeQuery();
+			System.out.println("Success");
+			while(result.next()) {
+				Food food_obj = new Food();
+				food_obj.setId(result.getInt("id"));
+				food_obj.setFood(result.getString("food"));
+				food_obj.setPrice(result.getDouble("price"));
+				System.out.println(result.getInt("id")+result.getString("food")+result.getDouble("price"));
+				food_list.add(food_obj);
+				
+			}			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		finally {
+			try {
+				stmt.close();
+			}
+			catch(SQLException s)
+			{
+				s.printStackTrace();
+			}
+		}
+		return food_list;
+		
+		
+	}
 	
 	
 	public static void deleteUsersRecord(String username, String password, String firstname, String lastname, Connection conn)
@@ -281,6 +295,52 @@ public class UsersTable {
 		}
 		
 		
+	}
+
+	public static boolean addMenu(String name, String price, String token, InputStream inputStream, Connection con) throws SQLException {
+		// TODO Auto-generated method stub
+		// constructs SQL statement
+        String sql = "INSERT INTO menu (food, price, token, food_img) values (?, ?, ?,?)";
+        //Using a PreparedStatement to save the file
+        PreparedStatement pstmtSave = con.prepareStatement(sql);
+        pstmtSave.setString(1, name);
+        pstmtSave.setString(2, price);
+        pstmtSave.setString(3, token);
+
+        if (inputStream != null) {
+            //files are treated as BLOB objects in database
+            //here we're letting the JDBC driver
+            //create a blob object based on the
+            //input stream that contains the data of the file
+            pstmtSave.setBlob(4, inputStream);
+        }
+        //sends the statement to the database server
+        int row = pstmtSave.executeUpdate();
+        if (row > 0) {
+           return true;
+        }
+		return false;
+	}
+
+	public static Boolean addMenu(String menuname, String price, String token, String filePath,
+			Connection conn) {
+//      query to insert name and image name
+     PreparedStatement pst;
+      try {
+    	  String query = "INSERT INTO menu (food,price,token,food_url) values (?, ?,?,?)";
+    	  pst = conn.prepareStatement(query);
+    	  pst.setString(1, menuname);
+    	  pst.setString(2, price);
+    	  pst.setString(3, token);
+    	  pst.setString(4, filePath);
+    	  pst.executeUpdate();
+    	  return true;
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+      
+		return null;
 	}
 	
 	
