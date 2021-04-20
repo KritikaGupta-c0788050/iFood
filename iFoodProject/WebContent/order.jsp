@@ -194,17 +194,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 															<h4>$<%=r_food.getInt("price")%> <span>$35.00</span></h4>
 														</div>
 												 		<div class="snipcart-details top_brand_home_details">
-															<form action="logout" method="post">
+															<form action="addP" method="post">
 																<fieldset>
-																	<input type="hidden" name="cmd" value="_cart" />
+																	<!-- <input type="hidden" name="cmd" value="_cart" />
 																	<input type="hidden" name="add" value="1" />
-																	<input type="hidden" name="business" value=" " />
+																	<input type="hidden" name="business" value=" " /> -->
 																	<input type="hidden" name="item_name" value="<%=r_food.getString("food")%>" />
 																	<input type="hidden" name="amount" value="<%=r_food.getInt("price")%>" />
-																	<input type="hidden" name="discount_amount" value="1.00" />
-																	<input type="hidden" name="currency_code" value="USD" />
+																	<input type="hidden" name="img" value="<%=r_food.getString("food_url")%>" />
+																	<!--<input type="hidden" name="currency_code" value="USD" />
 																	<input type="hidden" name="return" value=" " />
-																	<input type="hidden" name="cancel_return" value=" " />
+																	<input type="hidden" name="cancel_return" value=" " /> -->
 																	<input type="submit" name="submit" value="Add to cart" class="button" />
 																</fieldset>
 															</form>
@@ -258,17 +258,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 															<h4>$<%=r_drinks.getInt("price")%> <span>$35.00</span></h4>
 														</div>
 												 		<div class="snipcart-details top_brand_home_details">
-															<form action="#" method="post">
+															<form action="addP" method="post">
 																<fieldset>
-																	<input type="hidden" name="cmd" value="_cart" />
+																	<!-- <input type="hidden" name="cmd" value="_cart" />
 																	<input type="hidden" name="add" value="1" />
-																	<input type="hidden" name="business" value=" " />
+																	<input type="hidden" name="business" value=" " /> -->
 																	<input type="hidden" name="item_name" value="<%=r_drinks.getString("food")%>" />
 																	<input type="hidden" name="amount" value="<%=r_drinks.getInt("price")%>" />
-																	<input type="hidden" name="discount_amount" value="1.00" />
+																	<input type="hidden" name="img" value="<%=r_drinks.getString("food_url")%>" />
+																	<!-- <input type="hidden" name="discount_amount" value="1.00" />
 																	<input type="hidden" name="currency_code" value="USD" />
 																	<input type="hidden" name="return" value=" " />
-																	<input type="hidden" name="cancel_return" value=" " />
+																	<input type="hidden" name="cancel_return" value=" " /> -->
 																	<input type="submit" name="submit" value="Add to cart" class="button" />
 																</fieldset>
 															</form>
@@ -318,17 +319,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 															<h4>$<%=r_desert.getInt("price")%> <span>$35.00</span></h4>
 														</div>
 														<div class="snipcart-details top_brand_home_details">
-															<form action="#" method="post">
+															<form action="addP" method="post">
 																<fieldset>
-																	<input type="hidden" name="cmd" value="_cart" />
-																	<input type="hidden" name="add" value="1" />
-																	<input type="hidden" name="business" value=" " />
 																	<input type="hidden" name="item_name" value="<%=r_desert.getString("food")%>" />
 																	<input type="hidden" name="amount" value="<%=r_desert.getInt("price")%>" />
-																	<input type="hidden" name="discount_amount" value="1.00" />
-																	<input type="hidden" name="currency_code" value="USD" />
-																	<input type="hidden" name="return" value=" " />
-																	<input type="hidden" name="cancel_return" value=" " />
+																	<input type="hidden" name="img" value="<%=r_desert.getString("food_url")%>" />
 																	<input type="submit" name="submit" value="Add to cart" class="button" />
 																</fieldset>
 															</form>
@@ -342,8 +337,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="clearfix"> </div>
 							</div>
 								<%} %>
-																	
-								
 					</div>
 				</div>
 			</div>

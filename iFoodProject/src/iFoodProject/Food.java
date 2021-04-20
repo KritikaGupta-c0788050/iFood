@@ -8,21 +8,14 @@ package iFoodProject;
  *
  */
 public class Food {
-	int id;
+	
 	String food;
 	double price;
 	public Food() {}
 		
 	public Food(int id, String food, double price) {
-		this.id = id;
 		this.food = food;
 		this.price = price;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	public String getFood() {
 		return food;

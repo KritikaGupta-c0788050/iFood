@@ -7,8 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Set;
 
-
+import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime;    
 
 /**
  * 
@@ -197,21 +199,19 @@ public class UsersTable {
 
 	public static ArrayList<Food> getFoodItems(Connection conn)
 	{
-		
 		PreparedStatement stmt = null;
 		ResultSet result = null;
 		ArrayList<Food> food_list = new ArrayList<Food>();
 		try {
-			stmt =conn.prepareStatement("SELECT * FROM menu WHERE token = ?");
-			stmt.setString(1, "food");
+			stmt =conn.prepareStatement("SELECT food, price FROM menu");
 			result = stmt.executeQuery();
 			System.out.println("Success");
 			while(result.next()) {
 				Food food_obj = new Food();
-				food_obj.setId(result.getInt("id"));
+				
 				food_obj.setFood(result.getString("food"));
 				food_obj.setPrice(result.getDouble("price"));
-				System.out.println(result.getInt("id")+result.getString("food")+result.getDouble("price"));
+//				System.out.println(result.getString("food")+result.getDouble("price"));
 				food_list.add(food_obj);
 				
 			}			
@@ -234,6 +234,192 @@ public class UsersTable {
 		
 	}
 	
+	public static Boolean addMenu(String menuname, String price, String token, String filePath,
+			Connection conn) {
+//      query to insert name and image name
+     PreparedStatement pst;
+      try {
+    	  String query = "INSERT INTO menu (food,price,token,food_url) values (?, ?,?,?)";
+    	  pst = conn.prepareStatement(query);
+    	  pst.setString(1, menuname);
+    	  pst.setString(2, price);
+    	  pst.setString(3, token);
+    	  pst.setString(4, filePath);
+    	  pst.executeUpdate();
+    	  return true;
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+      
+		return null;
+	}
+	
+	public static Customer getUserInfo(String email, Connection conn) {
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		Customer cust = new Customer();
+		try {
+			stmt =conn.prepareStatement("SELECT name, email, address, phone FROM register where email = ?");
+			stmt.setString(1, email);
+			result = stmt.executeQuery();
+//			System.out.println("Success");
+			while(result.next()) {
+				cust.setName(result.getString("name"));
+				cust.setEmail(result.getString("email"));
+				cust.setPhone(result.getString("phone"));
+				cust.setAddress(result.getString("address"));
+//				System.out.println(result.getString("name")+result.getString("email")+result.getString("phone")+result.getString("address"));
+				
+			}			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		finally {
+			try {
+				stmt.close();
+			}
+			catch(SQLException s)
+			{
+				s.printStackTrace();
+			}
+		}
+		return cust;
+		
+	}
+
+	public static String sendOrder(String items, String quantities, int total, String name, String email,
+			String phone, String address, Connection conn) {
+		PreparedStatement pst;
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+		LocalDateTime now = LocalDateTime.now(); 
+	      try {
+	    	  String query = "INSERT INTO customer_orders (items,quantity,cost,username,email,phone,address) values (?,?,?,?,?,?,?)";
+	    	  pst = conn.prepareStatement(query);
+	    	  pst.setString(1, items);
+	    	  pst.setString(2, quantities);
+	    	  pst.setInt(3, total);
+	    	  pst.setString(4, name);
+	    	  pst.setString(5, email);
+	    	  pst.setString(6, phone);
+	    	  pst.setString(7, address);
+	    	  pst.executeUpdate();
+	    	  String ordertime = dtf.format(now);
+	    	  return ordertime;
+	      } catch (SQLException e) {
+	  		// TODO Auto-generated catch block
+	  		e.printStackTrace();
+	  	}
+	        
+		return null;
+	}
+	
+	
+	public static Boolean updatepayment(String email, int total, String orderTime, Connection conn) {
+		PreparedStatement stmt = null;
+		String paid = "paid";
+		try {
+			stmt =conn.prepareStatement("UPDATE customer_orders SET payment_status = ? WHERE email = ? AND cost = ? AND time = ?");
+			stmt.setString(1, paid);
+			stmt.setString(2,email);
+			stmt.setInt(3,total);
+			stmt.setString(4,orderTime);
+			
+			stmt.executeUpdate();
+			return true;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		finally {
+			try {
+				stmt.close();
+			}
+			catch(SQLException s)
+			{
+				s.printStackTrace();
+			}
+		}
+		return false;
+	}
+	
+	public static String getname(String usermail,Connection conn)
+	{
+//		System.out.println(usermail+password);
+		PreparedStatement stmt = null;
+		ResultSet rst = null;
+//		System.out.print("All Good1");
+		try {
+//			Select statement to find the user's login credentials in database if exists
+			stmt =conn.prepareStatement("Select name from register where email = ?");
+			stmt.setString(1, usermail);
+			rst = stmt.executeQuery();		
+			
+//			if the query has the resultset
+			if(rst.next()) {
+				return rst.getString(0);
+			}else {
+				return null;	// if there is no resultset in that case too it sends false
+			}
+		} 
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		finally {
+			try {
+				stmt.close();
+			}
+			catch(SQLException s)
+			{
+				s.printStackTrace();
+			}
+		}
+		return null;
+	}
+	
+	public static ArrayList<GetPreviousOrders> getorders(String email, Connection conn) {
+		PreparedStatement stmt = null;
+		ResultSet rst = null;
+		ArrayList<GetPreviousOrders> list_order = new ArrayList<>();
+//		System.out.print("All Good1");
+		try {
+//			Select statement to find the user's login credentials in database if exists
+			stmt =conn.prepareStatement("Select * from customer_orders where email = ?");
+			stmt.setString(1, email);
+			rst = stmt.executeQuery();		
+//			System.out.print("All Good2");
+//			if the query has the resultset
+			while(rst.next()) {
+//				System.out.print("All Good3");
+				GetPreviousOrders orders = new GetPreviousOrders(rst.getString("items"),rst.getString("quantity"),rst.getInt("cost"),rst.getString("username"),rst.getString("phone"),rst.getString("address"),rst.getString("payment_status"),rst.getString("time"),rst.getString("order_status"),rst.getString("email"));
+//				System.out.print("All Good4");
+				list_order.add(orders);
+//				System.out.print("All Good5");
+				
+			}
+			return list_order;
+		} 
+		catch(SQLException e) {
+			System.out.print("Oops");
+			e.printStackTrace();
+		}
+		
+		finally {
+			try {
+				stmt.close();
+			}
+			catch(SQLException s)
+			{
+				s.printStackTrace();
+			}
+		}
+		return null;
+	}
 	
 	public static void deleteUsersRecord(String username, String password, String firstname, String lastname, Connection conn)
 	{
@@ -297,51 +483,19 @@ public class UsersTable {
 		
 	}
 
-	public static boolean addMenu(String name, String price, String token, InputStream inputStream, Connection con) throws SQLException {
-		// TODO Auto-generated method stub
-		// constructs SQL statement
-        String sql = "INSERT INTO menu (food, price, token, food_img) values (?, ?, ?,?)";
-        //Using a PreparedStatement to save the file
-        PreparedStatement pstmtSave = con.prepareStatement(sql);
-        pstmtSave.setString(1, name);
-        pstmtSave.setString(2, price);
-        pstmtSave.setString(3, token);
 
-        if (inputStream != null) {
-            //files are treated as BLOB objects in database
-            //here we're letting the JDBC driver
-            //create a blob object based on the
-            //input stream that contains the data of the file
-            pstmtSave.setBlob(4, inputStream);
-        }
-        //sends the statement to the database server
-        int row = pstmtSave.executeUpdate();
-        if (row > 0) {
-           return true;
-        }
-		return false;
-	}
 
-	public static Boolean addMenu(String menuname, String price, String token, String filePath,
-			Connection conn) {
-//      query to insert name and image name
-     PreparedStatement pst;
-      try {
-    	  String query = "INSERT INTO menu (food,price,token,food_url) values (?, ?,?,?)";
-    	  pst = conn.prepareStatement(query);
-    	  pst.setString(1, menuname);
-    	  pst.setString(2, price);
-    	  pst.setString(3, token);
-    	  pst.setString(4, filePath);
-    	  pst.executeUpdate();
-    	  return true;
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-      
-		return null;
-	}
+	
+
+	
+
+	
+
+
+
+
+
+
 	
 	
 

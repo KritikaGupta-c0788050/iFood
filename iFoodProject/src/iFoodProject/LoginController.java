@@ -35,10 +35,14 @@ public class LoginController extends HttpServlet {
 		Boolean permit = UsersTable.loginPermissionRecord(email, password, con);
 		if(permit) {	//if correct letting in
 			
-//			if(request.getSession().getAttribute("Slogin")==null) {
+			if(request.getSession().getAttribute("login")==null) {
 				
-//				request.getSession().setAttribute("Slogin", email);
+				request.getSession().setAttribute("login", email);
 				response.sendRedirect("index.jsp");
+			}else {
+				request.getSession().setAttribute("login", email);
+				response.sendRedirect("index.jsp");
+			}
 //			}
 		}
 		else {	//else error page

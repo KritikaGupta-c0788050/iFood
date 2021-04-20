@@ -16,16 +16,34 @@
 
     <!-- Main css -->
     <link rel="stylesheet" href="static/login/css/style.css">
-    <link rel="stylesheet" href="static/food/css/style.css">
+    <!--//meta tags ends here-->
+    <!--booststrap-->
+    <link href="static/food/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="static/food/css/font-awesome.min.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="static/food/css/style.css" rel='stylesheet' type='text/css' media="all">
+    <!--//stylesheets-->
+    <link href="//fonts.googleapis.com/css?family=Oswald:400,500,600,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
 </head>
 <body>
 	
     <div class="main" style="padding: 20px 0;margin-top:8%; background-image:url(static/login/images/banner.jpg);">
-   
+           <%   if(request.getParameter("Lmsg") != null){%>
+   					 <div class="grid_3 grid_5 widget-shadow">
+						<div class="alert alert-warning" role="alert">			
+								<%= request.getParameter("Lmsg") %>
+						</div>
+					</div>
+<%} %>
+
         <!-- Sing in  Form -->
        <section class="sign-in">
             <div class="container">
-            
+  
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="static/login/images/r1.jpg" alt="sing in image"></figure>

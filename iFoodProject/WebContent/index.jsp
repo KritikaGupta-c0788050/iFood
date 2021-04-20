@@ -1,4 +1,19 @@
-<!--A Design by W3layouts
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@page import = "java.io.IOException"%>
+<%@page import = "java.sql.Connection"%>
+<%@page import = "java.util.ArrayList"%>
+<%@page import = "javax.servlet.annotation.WebServlet"%>
+<%@page import = "javax.servlet.http.HttpServlet"%>
+<%@page import = "javax.servlet.http.HttpServletRequest"%>
+<%@page import = "javax.servlet.http.HttpServletResponse"%>
+<%@page import = "java.sql.ResultSet"%>
+<%@page import = "java.sql.Statement"%>
+<%@page import = "java.sql.Connection"%>
+<%@page import = "java.sql.DriverManager"%>
+<%@page import = "java.sql.PreparedStatement"%>
+<%@page import = "java.sql.SQLException"%>
+    <!--A Design by W3layouts
   Author: W3layout
   Author URL: http://w3layouts.com
   License: Creative Commons Attribution 3.0 Unported
@@ -37,14 +52,16 @@
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
   </head>
   <body>
-   
+    
+    
     <div class="main-top" id="home">
       <!-- header -->
       <div class="headder-top">
         <!-- nav -->
         <nav >
           <div id="logo">
-            <h1><a href="index.jsp">Orchid</a></h1>
+            <h1><a href="index.jsp">Orchid</a></h1>         
+           
           </div>
           <label for="drop" class="toggle">Menu</label>
           <input type="checkbox" id="drop">
@@ -73,9 +90,18 @@
               <a href="#">Services <span class="fa fa-angle-down" aria-hidden="true"></span></a>
               <input type="checkbox" id="drop-2">
               <ul>
+               <%if(session.getAttribute("login") == null) {%>
                 <li><a href="/iFoodProject/Register.jsp" class="drop-text">Sign Up</a></li>
                 <li><a href="/iFoodProject/login.jsp" class="drop-text">Log In</a></li>
-                 <li><a href="/iFoodProject/logout.java" class="drop-text">Log Out</a></li>
+                <%} else{%>
+                <li><a href="order.jsp" class="drop-text">Order</a></li>
+                <li><a href="<%=request.getContextPath()%>/iFoodOrderStatus" class="drop-text">My Orders</a></li>
+                <%if(session.getAttribute("cart") != null) {%>
+                 <li><a href="cart.jsp" class="drop-text">My Cart</a></li>
+                 <%} %>
+                 <li><a href="<%=request.getContextPath()%>/logout" class="drop-text">Log Out</a></li>
+                 
+                 <%} %>
                 <!--  <li><a href="recipe.html" class="drop-text">Recipes</a></li>-->
               </ul>
             </li>
@@ -89,11 +115,52 @@
       <div class="main-banner">
         <div class="container-fluid">
           <div class="style-banner ">
-            <h4>A Taste & Healthy</h4>
-            <h4>Pasta on your Plate</h4>
+                      <%if(session.getAttribute("login") != null) {
+    	String l_email = (String) session.getAttribute("login");
+    	Connection conn = null;
+    	String url = "jdbc:mysql://localhost:3306/iFood";
+    	String user = "root";
+    	String pasword = "";
+
+    		Class.forName("com.mysql.cj.jdbc.Driver");
+    		conn = DriverManager.getConnection(url,user,pasword);
+			
+    		PreparedStatement stmt = null;
+    		ResultSet rst = null;
+//    		System.out.print("All Good1");
+    		try {
+//    			Select statement to find the user's login credentials in database if exists
+    			stmt =conn.prepareStatement("Select name from register where email = ?");
+    			stmt.setString(1, l_email);
+    			rst = stmt.executeQuery();		
+    			
+//    			if the query has the resultset
+    			
+    		 if(rst.next()) {
+    				String name =  rst.getString("name");%>
+    				 <h4>Welcome <%=name %></h4>
+    		<%	}else {
+    				String name = null;	// if there is no resultset in that case too it sends false
+    				%>
+    				 <h4><%=name %></h4>
+    			<%}
+    			} 
+    		catch(SQLException e) {
+    			e.printStackTrace();
+    		}%>
+   
+         
             <div class="two-demo-button mt-md-4 mt-3">
-              <p> Lorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit amet Lorem ipsum dolor sit amet</p>
+              <p> You are logged in via `<%=l_email %>`. <br> We bet you'll be having the most delicious meal of the day with us!</p>
             </div>
+            <%} else{
+            	%>
+            	<h4>Tasty & delicious food</h4>
+            	 <div class="two-demo-button mt-md-4 mt-3">
+              	<p>Life's too short for boring food. Let's have the best ones on our table today!!</p>
+            </div>
+            	<%
+            } %>
             <div class="social-icons mt-lg-4 mt-3">
               <ul>
                 <li><a href="#"><span class="fa fa-facebook mr-lg-3 mr-2"></span></a></li>
@@ -119,15 +186,15 @@
 		</div>
 	</div>
 	<% } %>
-	 <%if(request.getSession().getAttribute("Slogin") != null) {%>
+
+	 <%if(request.getAttribute("pay_msg") != null) {%>
     		<div class="grid_3 grid_5 widget-shadow">
 				<div class="alert alert-success" role="alert" style="color:#155724;background-color:#d4edda;border-color:#c3e6cb;;">			
-						<% Object email = request.getSession().getAttribute("Slogin"); %>
+						<%=request.getAttribute("pay_msg") %>
 						
 				</div>
 			</div>
 						<% } %>
-	
       <div class="container pt-lg-5 pt-md-4 pt-sm-4 pt-3">
         <h6 class="text-center top-title mb-2">History</h6>
         <h3 class="text-center title mb-3">About Us</h3>
