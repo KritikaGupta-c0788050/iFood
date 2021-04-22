@@ -693,6 +693,41 @@ public class UsersTable {
 		return 0;
 	}
 
+	public static String passwordRecovery(String email, Connection conn) {
+//		System.out.println(usermail+password);
+		PreparedStatement stmt = null;
+		ResultSet rst = null;
+//		System.out.print("All Good1");
+		try {
+//			Select statement to find the user's login credentials in database if exists
+			stmt =conn.prepareStatement("Select password from register where email = ?");
+			stmt.setString(1, email);
+			rst = stmt.executeQuery();		
+			
+//			if the query has the resultset
+			if(rst.next()) {
+				return rst.getString("password");
+				
+			}else {
+				return null;	// if there is no resultset in that case too it sends false
+			}
+		} 
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		finally {
+			try {
+				stmt.close();
+			}
+			catch(SQLException s)
+			{
+				s.printStackTrace();
+			}
+		}
+		return null;
+	}
+
 	
 
 

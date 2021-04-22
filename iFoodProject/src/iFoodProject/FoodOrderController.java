@@ -20,7 +20,7 @@ import com.google.gson.Gson;
  *
  */
 @WebServlet("/foodOrder")
-public class foodOrderController extends HttpServlet{
+public class FoodOrderController extends HttpServlet{
 	
 	/**
 	 * 
