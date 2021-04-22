@@ -35,7 +35,7 @@
            <%   if(request.getAttribute("msg") != null){%>
    					 <div class="grid_3 grid_5 widget-shadow">
 						<div class="alert alert-warning" role="alert">			
-								<%= request.getAttribute("msg") %>
+								<%=request.getAttribute("msg") %>
 						</div>
 					</div>
 <%} %>

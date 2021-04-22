@@ -20,8 +20,8 @@ import javax.mail.internet.MimeMessage;
 public class SendEmailFunctionality {
 
 	private String SMTP_HOST ="smtp.gmail.com";
-	private String FROM_ADDRESS ="guptakritika1903@gmail.com";
-	private String PASSWORD ="Up_11@n6416";
+	private String FROM_ADDRESS ="";
+	private String PASSWORD ="";
 	private String FROM_NAME="iFood";
 	
 	public boolean sendMail(String[] recepients, String[] bccRecepients, String subject,String message)

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Kritika Gupta c0788050
  *
  */
-
+//to define a servlet component in a web application
 @WebServlet("/iFoodRegister")
 public class RegistrationController extends HttpServlet{
 
@@ -45,6 +45,7 @@ public class RegistrationController extends HttpServlet{
 					
 					String [] recepients =new String[]{email};
 					new SendEmailFunctionality().sendMail(recepients, recepients, subject, message);
+					
 					request.setAttribute("msg" , "Account created successfuly. Please login");		
 					response.sendRedirect("login.jsp");
 				}else { //else

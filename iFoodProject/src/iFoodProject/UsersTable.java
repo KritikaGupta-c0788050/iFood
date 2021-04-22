@@ -62,7 +62,7 @@ public class UsersTable {
 						+"PRIMARY KEY(id),"
 						+"UNIQUE (email)"
 						+")");
-				return false;
+				return false; //false as email does not exist here too.
 			}
 		} 
 		catch(SQLException e) {
@@ -81,7 +81,7 @@ public class UsersTable {
 		return false;
 	}
 	
-//	Method for User regisstration
+//	Method for User registration
 	public static int RegisterRecord(String username, String email, String address, String phone, String password, Connection conn)
 	{
 		PreparedStatement stmt = null;	
@@ -162,12 +162,13 @@ public class UsersTable {
 		return false;
 	}
 	
+//	Method for inserting contactUs data by User in Database
 	public static  int contactUsData(String firstname, String lastname, String email, String phone, String message,
 			Connection conn) {
 		
 		PreparedStatement stmt = null;
 		
-		try {
+		try {//insert statement
 			stmt =conn.prepareStatement("insert into contactUs (firstname, lastname, email, phone, message) values(?,?,?,?,?)");
 			stmt.setString(1, firstname);
 			stmt.setString(2, lastname);
@@ -175,7 +176,10 @@ public class UsersTable {
 			stmt.setString(4,phone);
 			stmt.setString(5, message);
 			
+//			executing commands
 			int query_status = stmt.executeUpdate();
+			
+//			returning data to servlet
 			return query_status;
 			
 		} catch (SQLException e) {
@@ -196,27 +200,32 @@ public class UsersTable {
 		
 	}
 	
-
+//	Method for getting food items by User in Database
 	public static ArrayList<Food> getFoodItems(Connection conn)
 	{
 		PreparedStatement stmt = null;
 		ResultSet result = null;
+		
+//		ArrayList of food class for saving info
 		ArrayList<Food> food_list = new ArrayList<Food>();
 		try {
 			stmt =conn.prepareStatement("SELECT food, price FROM menu");
 			result = stmt.executeQuery();
-//			System.out.println("Success");
+			
+//			adding ResultSet object to food class ArrayList
 			while(result.next()) {
 				Food food_obj = new Food();
 				
+//				setting food objects data values
 				food_obj.setFood(result.getString("food"));
 				food_obj.setPrice(result.getDouble("price"));
-//				System.out.println(result.getString("food")+result.getDouble("price"));
+				
+//				adding food class object to ArrayList
 				food_list.add(food_obj);
 				
 			}			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -229,16 +238,17 @@ public class UsersTable {
 				s.printStackTrace();
 			}
 		}
-		return food_list;
+		return food_list;// returning ArrayList 
 		
 		
 	}
+
 	
+//	Method for admin to add menu items 
 	public static Boolean addMenu(String menuname, String price, String token, String filePath,
 			Connection conn) {
-//      query to insert name and image name
      PreparedStatement pst;
-      try {
+      try {//insert statement
     	  String query = "INSERT INTO menu (food,price,token,food_url) values (?, ?,?,?)";
     	  pst = conn.prepareStatement(query);
     	  pst.setString(1, menuname);
@@ -246,22 +256,27 @@ public class UsersTable {
     	  pst.setString(3, token);
     	  pst.setString(4, filePath);
     	  pst.executeUpdate();
-    	  return true;
+    	  
+    	  return true;	//returning boolean true for success
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
       
-		return null;
+		return null; //returning boolean false for failure
 	}
 	
+// Method to get user/customer information
 	public static Customer getUserInfo(String email, Connection conn) {
+		
 		PreparedStatement stmt = null;
 		ResultSet result = null;
 		Customer cust = new Customer();
-		try {
+		try {//select query
 			stmt =conn.prepareStatement("SELECT name, email, address, phone FROM register where email = ?");
 			stmt.setString(1, email);
+			
+//			storing result
 			result = stmt.executeQuery();
 //			System.out.println("Success");
 			while(result.next()) {
@@ -289,7 +304,7 @@ public class UsersTable {
 		return cust;
 		
 	}
-
+	// Method to send customer order to database
 	public static String sendOrder(String items, String quantities, double total, String name, String email,
 			String phone, String address, Connection conn) {
 		PreparedStatement pst;
@@ -316,7 +331,7 @@ public class UsersTable {
 		return null;
 	}
 	
-	
+	// Method to update payment status of customer order to database
 	public static Boolean updatepayment(String email, double total, String orderTime, Connection conn) {
 		PreparedStatement stmt = null;
 		String paid = "paid";
@@ -347,6 +362,7 @@ public class UsersTable {
 		return false;
 	}
 	
+// Method to get the name of the customer using email address 
 	public static String getname(String usermail,Connection conn)
 	{
 //		System.out.println(usermail+password);
@@ -354,7 +370,7 @@ public class UsersTable {
 		ResultSet rst = null;
 //		System.out.print("All Good1");
 		try {
-//			Select statement to find the user's login credentials in database if exists
+//			Select statement to find the user's name from database 
 			stmt =conn.prepareStatement("Select name from register where email = ?");
 			stmt.setString(1, usermail);
 			rst = stmt.executeQuery();		
@@ -382,6 +398,7 @@ public class UsersTable {
 		return null;
 	}
 	
+//	Method to get all the previous orders of a particular customer
 	public static ArrayList<GetPreviousOrders> getorders(String email, Connection conn) {
 		PreparedStatement stmt = null;
 		ResultSet rst = null;
@@ -421,6 +438,7 @@ public class UsersTable {
 		return null;
 	}
 	
+//	Method to cancel order after customer request
 	public static int cancelOrder(String email, String items, String cost, String orderby, String phone, String address,
 			String payment_status, String order_time, String order_status, Connection conn) {
 		
@@ -457,7 +475,8 @@ public class UsersTable {
 		
 		return rst;
 	}
-	
+
+//	Method to add review by customers on orders that are delivered
 	public static int addReview(String email, String items, String cost, String orderby, String phone, String address,
 			String payment_status, String order_time, String order_status, String review, Connection conn) {
 		
@@ -498,6 +517,7 @@ public class UsersTable {
 		return 0;
 	}
 
+//	Method to get all pending orders for Admin
 	public static ArrayList<GetPreviousOrders> getallorders(Connection conn) {
 		PreparedStatement stmt = null;
 		ResultSet rst = null;
@@ -537,6 +557,7 @@ public class UsersTable {
 		return null;
 	}
 
+//	Methid to update order status to delivered by Admin
 	public static int orderDelivered(String email, String items, String cost, String orderby, String phone,
 			String address, String payment_status, String order_time, String order_status, Connection conn) {
 		PreparedStatement stmt = null;
