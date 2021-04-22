@@ -3,7 +3,7 @@
         <div class="row">
           <div class="col-lg-3 col-md-6 col-sm-6 footer-bottom-txt">
             <h4><a style="color:inherit;"href="index.jsp">Orchid</a></h4>
-            <p class="pt-lg-4 pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            <p class="pt-lg-4 pt-3">A place rich, healthy and mouth-watering meals. 
             </p>
           </div>
           <div class="col-lg-3 col-md-6 col-sm-6 footer-bottom-txt">
@@ -19,9 +19,9 @@
           <div class="col-lg-3 col-md-6 col-sm-6 footer-bottom-txt">
             <h4>Our Address</h4>
             <div class="mt-3 footer-top">
-              <p><span>Address</span> :Melbourne St,South <br>Birbane 4101 Austraila.</p>
+              <p><span>Address</span> :Oldtown, Old Toronto <br>Ontario, Canada</p>
               <p class="pt-2"> <span> Phone</span> :+(000) 123 4565 32</p>
-              <p class="pt-2"><span>Email</span>   :<a href="mailto:info@example.com">info@example1.com</a> 
+              <p class="pt-2"><span>Email</span>   :<a href="mailto:info@example.com">orchid@xyz.com</a> 
               </p>
             </div>
           </div>

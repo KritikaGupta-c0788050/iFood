@@ -60,17 +60,17 @@
         <h6 class="text-center top-title mb-2">History</h6>
         <h3 class="text-center title mb-3">About Us</h3>
         <div class="title-wls-text text-center pt-lg-3 pt-2 mb-lg-5 mb-md-4 mb-sm-4 mb-3">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum </p>
-        </div>
+          <p>The Restaurant is centrally located on top of the hill with mesmerizing view of the Creek and stunning scenery of Oldtown, Toronto and the beaches around.</p>
+           </div>
         <div class="row">
           <div class="col-lg-4 about-imgs-txt">
             <img src="static/food/images/ab1.jpg" alt="news image" class="img-fluid">
           </div>
           <div class="col-lg-4 text-center about-two-grids">
             <div class="about-para-txt">
-              <p>sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, eiusmod tempor incididunt ut labore et consectetur adipiscing sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, eiusmod tempor incididunt ut labore et consectetur adipiscing</p>
-              <p class="mt-2">sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, eiusmod tempor incididunt ut labore et consectetur adipiscing sed do eiusmod</p>
-            </div>
+              <p>Chef Akira Back opens his first Canadian namesake restaurant in Toronto’s Orchid Hotel. Drawing on inspiration from his Korean heritage and travels around the globe, chef Back has created a menu that blends modern Japanese cuisine with authentic Korean flavours. Complemented by the sleek design with layers of gold detail and tactile finishes in carbon black, the unparalleled dining experience is a true statement of luxury.</p>
+              <p class="mt-2">Drawing on inspiration from his Korean heritage and travels around the globe, chef Back has created a menu that blends modern Japanese cuisine with authentic Korean flavours.</p>
+              </div>
             <div class="view-buttn mt-lg-5 mt-md-4 mt-3">
               <a href="order.jsp" class=" scroll">Book Here</a>
             </div>
@@ -113,12 +113,12 @@
       </div>
     </section>
     <!-- Clients  -->
-    <section class="clients py-lg-4 py-md-3 py-sm-3 py-3" id="clients">
+        <section class="clients py-lg-4 py-md-3 py-sm-3 py-3" id="clients">
       <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
         <h6 class="text-center top-title mb-2">Golden Words</h6>
         <h3 class="text-center title mb-3">Our Clients</h3>
         <div class="title-wls-text text-center pt-lg-3 pt-2 mb-lg-5 mb-md-4 mb-sm-4 mb-3">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum </p>
+        <!--   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum </p> -->
         </div>
         <div class="row pt-lg-5 pt-md-4 pt-3">
           <div class="col-lg-4 clients-client">
@@ -127,10 +127,9 @@
                 <span class="fa fa-quote-right" aria-hidden="true"></span>
               </div>
               <div class="clients-info">
-                <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet,
+                <p >Without doubt one of the favorite places we stayed during our time! We were warmly welcomed by the staff with drink, The staff was extremely friendly. 
                 </p>
-                <h4 class="pt-2 text-right">Jony Joe</h4>
+                <h4 class="pt-2 text-right">Ankur Trivedi</h4>
               </div>
             </div>
           </div>
@@ -140,10 +139,9 @@
                 <span class="fa fa-quote-right" aria-hidden="true"></span>
               </div>
               <div class="clients-info">
-                <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet,
+                <p >We went all inclusive and were able to eat and drink there until 6. We also enjoyed the pool. All the staff was friendly and helpful too.
                 </p>
-                <h4 class="pt-2 text-right">Max Joe</h4>
+                <h4 class="pt-2 text-right">Max Phill</h4>
               </div>
             </div>
           </div>
@@ -153,16 +151,14 @@
                 <span class="fa fa-quote-right" aria-hidden="true"></span>
               </div>
               <div class="clients-info">
-                <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet,
+                <p >The staff was nice, kind and helpful. The place is okay. I enjoyed my food and the environment there. I completely recommend it!
                 </p>
-                <h4 class="pt-2 text-right">Kely Joe</h4>
+                <h4 class="pt-2 text-right">Kely Jenner</h4>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
     <!--//Clients  -->
     <!-- footer -->
      <jsp:include page="footer.jsp" />

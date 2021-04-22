@@ -105,7 +105,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
    	 	     
    	 	     
   							<% 	 
-  							 	int total = 0;
+  							 	double total = 0;
  								 try{
 									 	for(int i =0;i<productsInCart.size(); i++) {
 	 										 iFoodProject.Product p_obj3 = productsInCart.get(i);

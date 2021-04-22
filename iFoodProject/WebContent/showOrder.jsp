@@ -98,11 +98,11 @@ while(it.hasNext()) {
 		<div class="main-page">
 			<div class="tables">
 				<!-- <h2 class="title1">Tables</h2> -->
-				<div class="bs-example widget-shadow" data-example-id="contextual-table"> 
-						<h4>Your Orders, wanna order now?</h4>
-						<table class="table"> 
-						<thead> 
-							<tr class="warning"> 
+<div class="bs-example widget-shadow" data-example-id="contextual-table"> 
+						<h4>Your Orders, wanna order now? Click here >> <a href="order.jsp">Order Now</a></h4>
+						<table class="table">
+						<thead>
+							<tr class="warning">
 							<th>#</th> 
 								<th>Items Ordered</th>
 								<th>Order cost</th>
@@ -112,27 +112,45 @@ while(it.hasNext()) {
 								<th>Payment Status</th>
 								<th>Ordered at:</th>
 								<th>Order Status</th>
+								<th>Cancel Order</th>
+								<th>Add Review</th>
 						</tr> 
-						</thead> 
+						</thead>
 						<tbody> 
 						
 							<% int count = 1;
 							int num = items.size() -1;
-for(int i = num; i >0; i--){ %>
+for(int i = num; i >=0; i--){ %>
 <tr>
 <th scope="row"><%=count %></th> 
 <td><%=items.get(i)%></td>
-<td><%=total.get(i)%></td>
+<td>$<%=total.get(i)%></td>
 <td><%=username.get(i)%></td>
 <td><%=phone.get(i)%></td>
 <td><%=address.get(i)%></td>
 <td><%=payment_status.get(i)%></td>
 <td><%=time.get(i)%></td>
 <td><%=order_status.get(i)%></td>
+<form action="iFoodChange" method="post">
+<input type="hidden" name="items" value="<%=items.get(i)%>">
+<input type="hidden" name="cost" value="<%=total.get(i)%>">
+<input type="hidden" name="orderby" value="<%=username.get(i)%>">
+<input type="hidden" name="phone" value="<%=phone.get(i)%>">
+<input type="hidden" name="address" value="<%=address.get(i)%>">
+<input type="hidden" name="payment_status" value="<%=payment_status.get(i)%>">
+<input type="hidden" name="ordertime" value="<%=time.get(i)%>">
+<input type="hidden" name="order_status" value="<%=order_status.get(i)%>">
+<%if((order_status.get(i)).equals("pending")){ %>
+<td><input type="submit" name="cancel" value="Cancel" style="background:#0b507c; color:#fff;"></td>
+<td>NA</td></form>
+<%}else{%>
+<td>NA</td>
+<td><input type="text" name="review" required><br><input type="submit" name="rev_btn" value="Add Review" style="background:#0b507c; color:#fff; float:right;"></td>
+<%} %></form>
+
 </tr>
 <%count++;} %>
-							
-						</tbody> 
+</tbody> 
 						</table> 
 					</div>
 			</div>

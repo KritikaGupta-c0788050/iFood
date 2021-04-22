@@ -102,19 +102,27 @@
 						</thead> 
 						<tbody> 
 						
-							<% 	
+							<% 	double total = 0.0;
 							for(int i =0;i<productsInCart.size(); i++) {
 								iFoodProject.Product p_obj2 = productsInCart.get(i);%>
-<tr>
+<tr>						<%-- <%System.out.println(p_obj2.getPrice());%> --%>
 <th scope="row"><%=i+1 %></th> 
-<td><%=p_obj2.getImg() %></td>
+<td><img src="static/menuImg/<%=p_obj2.getImg() %>" alt="product_img" height="60" width="60"/></td>
 <td><%=p_obj2.getName()%></td>
 <td><%=p_obj2.getQuantity() %></td>
-<td><%=p_obj2.getPrice()%></td>
-<td><%=p_obj2.getTotal()%></td>
+<td>$<%=p_obj2.getPrice()%></td>
+<td>$<%=p_obj2.getTotal()%></td>
 </tr>
-<% }  %>
-							
+<% total +=p_obj2.getTotal();}  %>
+<%double tax = 0.13 * total; 
+total += tax; %>
+							<tr class="info">
+							<th></th>
+							<td></td>
+							<td></td>
+							<td colspan="2">Grand Total (including 13% taxes)</td>
+							<td>$<%=total %></td>
+							</tr>
 						</tbody> 
 						</table> 
 					</div>
@@ -126,15 +134,15 @@
 				<div class=" panel-body-inputin">
 					<form class="form-horizontal" action="iFoodOrderDetails" method="post">
 						<div class="form-group">
-						<label class="col-md-4 control-label">Would you lie to dine-in in our ??</label>
-						<button type="submit" name="dine" style="float:right;"class="btn btn-default">Dine In</button>
+						<label class="col-md-4 control-label" style="text-align:left;padding-left:7%;">Would you lie to dine-in?</label>
+						<button type="submit" name="dine" class="btn btn-default">Dine In</button>
 						</div>
 						<div class="form-group">
-						<label class="col-md-2 control-label">Deliver at my registered place:</label>
+						<label class="col-md-4 control-label" style="text-align:left;padding-left:7%;">Deliver at my registered place:</label>
 						<button type="submit" name="deliver" class="btn btn-default">Home Delivery</button>
 						</div>
 						<div class="form-group">
-						<label class="col-md-2 control-label">Enter new delivery address:</label>
+						<label class="col-md-4 control-label" style="text-align:left;padding-left:7%;">Enter new delivery address:</label>
 						</div>
 						<div class="form-group">
 							<label class="col-md-2 control-label">Address</label>
@@ -159,12 +167,13 @@
 							</div>
 						</div>
 							<div class="form-group">
-								<button type="submit" name="newdeliver" class="btn btn-default">Deliver Here</button>
+								<button type="submit" name="newdeliver" style="float:right;" class="btn btn-default">Deliver Here</button>
 						</div>
 					</form>
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 </div>
    <!-- footer -->

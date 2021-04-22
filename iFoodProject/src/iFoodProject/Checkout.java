@@ -57,7 +57,7 @@ public class Checkout extends HttpServlet{
 				for(int i = 0; i< names.size(); i++) {
 					if(p_obj2.getName().contentEquals(names.get(i))) {
 						p_obj2.setQuantity(quantity.get(i));
-						int total = quantity.get(i) * p_obj2.getPrice();
+						double total = quantity.get(i) * p_obj2.getPrice();
 						p_obj2.setTotal(total);
 					}
 				}

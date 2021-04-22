@@ -200,7 +200,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 																	<input type="hidden" name="add" value="1" />
 																	<input type="hidden" name="business" value=" " /> -->
 																	<input type="hidden" name="item_name" value="<%=r_food.getString("food")%>" />
-																	<input type="hidden" name="amount" value="<%=r_food.getInt("price")%>" />
+																	<input type="hidden" name="amount" value="<%=r_food.getString("price")%>" />
 																	<input type="hidden" name="img" value="<%=r_food.getString("food_url")%>" />
 																	<!--<input type="hidden" name="currency_code" value="USD" />
 																	<input type="hidden" name="return" value=" " />
@@ -264,7 +264,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 																	<input type="hidden" name="add" value="1" />
 																	<input type="hidden" name="business" value=" " /> -->
 																	<input type="hidden" name="item_name" value="<%=r_drinks.getString("food")%>" />
-																	<input type="hidden" name="amount" value="<%=r_drinks.getInt("price")%>" />
+																	<input type="hidden" name="amount" value="<%=r_drinks.getString("price")%>" />
 																	<input type="hidden" name="img" value="<%=r_drinks.getString("food_url")%>" />
 																	<!-- <input type="hidden" name="discount_amount" value="1.00" />
 																	<input type="hidden" name="currency_code" value="USD" />
@@ -322,7 +322,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 															<form action="addP" method="post">
 																<fieldset>
 																	<input type="hidden" name="item_name" value="<%=r_desert.getString("food")%>" />
-																	<input type="hidden" name="amount" value="<%=r_desert.getInt("price")%>" />
+																	<input type="hidden" name="amount" value="<%=r_desert.getString("price")%>" />
 																	<input type="hidden" name="img" value="<%=r_desert.getString("food_url")%>" />
 																	<input type="submit" name="submit" value="Add to cart" class="button" />
 																</fieldset>

@@ -49,7 +49,16 @@
     <!--//stylesheets-->
     <link href="//fonts.googleapis.com/css?family=Oswald:400,500,600,700" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
-    
+   <!-- Bootstrap Core CSS -->
+<link href="static/common/css/bootstrap.css" rel='stylesheet' type='text/css' />
+
+<!-- Custom CSS -->
+<link href="static/common/css/style.css" rel='stylesheet' type='text/css' />
+<link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+<!-- font-awesome icons CSS -->
+<link href="static/common/css/font-awesome.css" rel="stylesheet"> 
+<!-- //font-awesome icons CSS -->
+<link href="static/common/css/custom.css" rel="stylesheet"> 
 <% 
 //HttpSession session = request.getSession();
 //		getting values from existing session variable
@@ -62,7 +71,21 @@
 </head>
 <body>
  <jsp:include page="mainTop.jsp" />
- <h1>Payment</h1>
+ <div class="using-border py-3">
+      <div class="inner_breadcrumb  ml-4">
+        <ul class="short_ls">
+          <li>
+            <a href="#">Home</a>
+            <span>/ /</span>
+          </li>
+          <li>Payment</li>
+        </ul>
+      </div>
+    </div>
+     <div class="main-content">
+    <div id="page-wrapper">
+		<div class="main-page">
+<%--  <h1>Payment</h1>
  Your order
 <% 	for(int i =0;i<productsInCart.size(); i++) {
 	iFoodProject.Product p_obj2 = productsInCart.get(i);%>
@@ -81,7 +104,64 @@
 	<input type="submit" name="payDone" value="Pay"><br>
 	
 	OR press pay later <input type="submit" name="paylater" value="Pay Later"><br>
-</form>	
+</form>	 --%>
+		<div class="forms">
+			<!-- <h2 class="title1">Forms</h2> -->
+			<div class="form-three widget-shadow">
+				<div class=" panel-body-inputin">
+					<form class="form-horizontal" action="iFoodPayment" method="post">
+						<div class="form-group">
+						<label class="col-md-4 control-label" style="text-align:left;padding-left:7%;">Enter the card details for the payment or please click pay later for the same.</label>
+						<button type="submit" name="paylater" class="btn btn-default">Pay Later</button>
+						</div>
+						<div class="form-group">
+						<label class="col-md-8 control-label" style="text-align:left;padding-left:7%;">Enter credit/debit card details:</label>
+						</div>
+						<div class="form-group">
+							<label class="col-md-2 control-label">Card Number</label>
+							<div class="col-md-8">
+								<div class="input-group">							
+									<span class="input-group-addon">
+										<i class="fa fa-plus-square"></i>
+									</span>
+									<input type="text" name="card_num" class="form-control1" placeholder="Card Number">
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-2 control-label">Name on Card</label>
+							<div class="col-md-8">
+								<div class="input-group">	
+								<span class="input-group-addon">						
+									<i class="glyphicon glyphicon-earphone"></i>
+								</span>
+									<input type="text" name="card_name" class="form-control1" placeholder="Cardholder name">
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-2 control-label">Cvv</label>
+							<div class="col-md-8">
+								<div class="input-group">							
+									<span class="input-group-addon">
+										<i class="fa fa-plus-square"></i>
+									</span>
+									<input type="text" name="card_cvv" class="form-control1" placeholder="Card secret number">
+								</div>
+							</div>
+						</div>
+							<div class="form-group">
+							<input type="hidden" name="ordertime" value="<%=ot%>">
+								<button type="submit" name="payDone" style="float:right;" class="btn btn-default">Pay</button>
+						</div>
+					</form>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+
     <!-- footer -->
      <jsp:include page="footer.jsp" />
     

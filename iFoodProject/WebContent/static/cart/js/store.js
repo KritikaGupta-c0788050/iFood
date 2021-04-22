@@ -50,7 +50,7 @@ function quantityChanged(event){
 function updateCartTotal(){
 	var cartItemContainer = document.getElementsByTagName('TBODY')[0]	
 	var cartRows = cartItemContainer.getElementsByClassName('cake-top')
-	var total = 0
+	var total = 0.0
 	for (var i = 0; i < cartRows.length; i++) {
 		var cartRow = cartRows[i]
 		var priceElement = cartRow.getElementsByClassName('priceELE')[0]

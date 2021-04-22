@@ -10,14 +10,14 @@ package iFoodProject;
 public class Product {
 
 		String name;
-		int  price;
+		double  price;
 		int quantity;
-		int total;
+		double total;
 		String img;
 		
 		Product() {}
 		
-		Product(String name, int price, int quantity, int total, String img){
+		Product(String name, double price, int quantity, double total, String img){
 			setName(name);
 			setPrice(price);
 			setQuantity(quantity);
@@ -33,19 +33,19 @@ public class Product {
 			this.img = img;
 		}
 
-		public int getPrice() {
+		public double getPrice() {
 			return price;
 		}
 
-		public void setPrice(int price) {
+		public void setPrice(double price) {
 			this.price = price;
 		}
 
-		public int getTotal() {
+		public double getTotal() {
 			return total;
 		}
 
-		public void setTotal(int total) {
+		public void setTotal(double total) {
 			this.total = total;
 		}
 

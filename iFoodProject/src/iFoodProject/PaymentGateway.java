@@ -33,7 +33,7 @@ public class PaymentGateway extends HttpServlet{
 			
 //			Converting the object from session into ArrayList of Product
 			ArrayList<Product> productsInCart = (ArrayList<Product>) products;
-			int total = 0;
+			double total = 0;
 		
 			
 			Iterator<Product> p_it = productsInCart.iterator();

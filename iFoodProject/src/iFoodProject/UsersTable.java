@@ -242,7 +242,7 @@ public class UsersTable {
     	  String query = "INSERT INTO menu (food,price,token,food_url) values (?, ?,?,?)";
     	  pst = conn.prepareStatement(query);
     	  pst.setString(1, menuname);
-    	  pst.setString(2, price);
+    	  pst.setDouble(2, Double.parseDouble(price));
     	  pst.setString(3, token);
     	  pst.setString(4, filePath);
     	  pst.executeUpdate();
@@ -290,7 +290,7 @@ public class UsersTable {
 		
 	}
 
-	public static String sendOrder(String items, String quantities, int total, String name, String email,
+	public static String sendOrder(String items, String quantities, double total, String name, String email,
 			String phone, String address, Connection conn) {
 		PreparedStatement pst;
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
@@ -300,7 +300,7 @@ public class UsersTable {
 	    	  pst = conn.prepareStatement(query);
 	    	  pst.setString(1, items);
 	    	  pst.setString(2, quantities);
-	    	  pst.setInt(3, total);
+	    	  pst.setDouble(3, total);
 	    	  pst.setString(4, name);
 	    	  pst.setString(5, email);
 	    	  pst.setString(6, phone);
@@ -317,14 +317,14 @@ public class UsersTable {
 	}
 	
 	
-	public static Boolean updatepayment(String email, int total, String orderTime, Connection conn) {
+	public static Boolean updatepayment(String email, double total, String orderTime, Connection conn) {
 		PreparedStatement stmt = null;
 		String paid = "paid";
 		try {
 			stmt =conn.prepareStatement("UPDATE customer_orders SET payment_status = ? WHERE email = ? AND cost = ? AND time = ?");
 			stmt.setString(1, paid);
 			stmt.setString(2,email);
-			stmt.setInt(3,total);
+			stmt.setDouble(3,total);
 			stmt.setString(4,orderTime);
 			
 			stmt.executeUpdate();
@@ -421,18 +421,24 @@ public class UsersTable {
 		return null;
 	}
 	
-	public static void deleteUsersRecord(String username, String password, String firstname, String lastname, Connection conn)
-	{
+	public static int cancelOrder(String email, String items, String cost, String orderby, String phone, String address,
+			String payment_status, String order_time, String order_status, Connection conn) {
 		
 		PreparedStatement stmt = null;
-		
+		int rst=0;
 		try {
-			stmt =conn.prepareStatement("_________________________________");
-			stmt.setString(1, " _______");
-			stmt.setString(2,"   ______________");
+			stmt =conn.prepareStatement("DELETE FROM customer_orders WHERE items = ? AND cost = ? AND username = ? AND email = ? AND phone = ? AND address = ? AND  payment_status = ? AND time = ?");
+			stmt.setString(1, items);
+			stmt.setDouble(2, Double.parseDouble(cost));
+			stmt.setString(3, orderby);
+			stmt.setString(4, email);
+			stmt.setString(5, phone);
+			stmt.setString(6, address);
+			stmt.setString(7, payment_status);
+			stmt.setString(8, order_time);
 			
 			
-			stmt.executeUpdate();
+			rst = stmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -449,21 +455,29 @@ public class UsersTable {
 			}
 		}
 		
-		
+		return rst;
 	}
 	
-	public static void updateUsersRecord(String username, String password, String firstname, String lastname, Connection conn)
-	{
+	public static int addReview(String email, String items, String cost, String orderby, String phone, String address,
+			String payment_status, String order_time, String order_status, String review, Connection conn) {
 		
 		PreparedStatement stmt = null;
-		
+		int rst=0;
 		try {
-			stmt =conn.prepareStatement("_________________________________");
-			stmt.setString(1, " _______");
-			stmt.setString(2,"   ______________");
+			stmt =conn.prepareStatement("UPDATE customer_orders SET review = ? WHERE items = ? AND cost = ? AND username = ? AND email = ? AND phone = ? AND address = ? AND  payment_status = ? AND time = ?");
+			stmt.setString(1, review);
+			stmt.setString(2, items);
+			stmt.setDouble(3, Double.parseDouble(cost));
+			stmt.setString(4, orderby);
+			stmt.setString(5, email);
+			stmt.setString(6, phone);
+			stmt.setString(7, address);
+			stmt.setString(8, payment_status);
+			stmt.setString(9, order_time);
 			
 			
-			stmt.executeUpdate();
+			rst = stmt.executeUpdate();
+			return rst;
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -481,7 +495,205 @@ public class UsersTable {
 		}
 		
 		
+		return 0;
 	}
+
+	public static ArrayList<GetPreviousOrders> getallorders(Connection conn) {
+		PreparedStatement stmt = null;
+		ResultSet rst = null;
+		ArrayList<GetPreviousOrders> list_order = new ArrayList<>();
+//		System.out.print("All Good1");
+		try {
+//			Select statement to find the user's login credentials in database if exists
+			stmt =conn.prepareStatement("Select * from customer_orders where order_status = ?");
+			stmt.setString(1, "pending");
+			rst = stmt.executeQuery();		
+//			System.out.print("All Good2");
+//			if the query has the resultset
+			while(rst.next()) {
+//				System.out.print("All Good3");
+				GetPreviousOrders orders = new GetPreviousOrders(rst.getString("items"),rst.getString("quantity"),rst.getInt("cost"),rst.getString("username"),rst.getString("phone"),rst.getString("address"),rst.getString("payment_status"),rst.getString("time"),rst.getString("order_status"),rst.getString("email"));
+//				System.out.print("All Good4");
+				list_order.add(orders);
+//				System.out.print("All Good5");
+				
+			}
+			return list_order;
+		} 
+		catch(SQLException e) {
+			System.out.print("Oops");
+			e.printStackTrace();
+		}
+		
+		finally {
+			try {
+				stmt.close();
+			}
+			catch(SQLException s)
+			{
+				s.printStackTrace();
+			}
+		}
+		return null;
+	}
+
+	public static int orderDelivered(String email, String items, String cost, String orderby, String phone,
+			String address, String payment_status, String order_time, String order_status, Connection conn) {
+		PreparedStatement stmt = null;
+		int rst=0;
+		try {
+			stmt =conn.prepareStatement("UPDATE customer_orders SET order_status = ?, payment_status = ? WHERE items = ? AND cost = ? AND username = ? AND email = ? AND phone = ? AND address = ? AND time = ?");
+			stmt.setString(1, "delivered");
+			stmt.setString(2, "paid");
+			stmt.setString(3, items);
+			stmt.setDouble(4, Double.parseDouble(cost));
+			stmt.setString(5, orderby);
+			stmt.setString(6, email);
+			stmt.setString(7, phone);
+			stmt.setString(8, address);
+			stmt.setString(9, order_time);
+			
+			
+			rst = stmt.executeUpdate();
+			return rst;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		finally {
+			try {
+				stmt.close();
+			}
+			catch(SQLException s)
+			{
+				s.printStackTrace();
+			}
+		}
+		
+		
+		return 0;
+	}
+
+	public static Boolean adminloginPermission(String email, String password, Connection conn) {
+		PreparedStatement stmt = null;
+		ResultSet rst = null;
+//		System.out.print("All Good1");
+		try {
+//			Select statement to find the user's login credentials in database if exists
+			stmt =conn.prepareStatement("Select * from admin where email = ?");
+			stmt.setString(1, email);
+			rst = stmt.executeQuery();		
+			
+//			if the query has the resultset
+			if(rst.next()) {
+//				System.out.print(rst.getString("email")+" "+rst.getString("password"));
+//				Matching the user's email and password with the entered mail and password
+				if(rst.getString("email").contentEquals(email) && rst.getString("password").contentEquals(password)){
+					return true;		//if there is a match then it sends boolean true			
+				}else {
+					return false;	//else false
+				}
+			}else {
+				return false;	// if there is no resultset in that case too it sends false
+			}
+		} 
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		finally {
+			try {
+				stmt.close();
+			}
+			catch(SQLException s)
+			{
+				s.printStackTrace();
+			}
+		}
+		return false;
+	}
+
+	public static boolean adminExistingMail(String email, Connection conn) {
+		PreparedStatement stmt = null;
+		ResultSet rst = null;
+//		System.out.print("All Good1");
+//		 table and checking if the entered email matches any
+//		System.out.println("4");
+		try {
+			//	Selecting data from database table and checking if the entered email matches any
+				stmt =conn.prepareStatement("Select * from admin where email = ?");
+				stmt.setString(1, email);
+//				System.out.println("5");
+//				Storing the result
+				rst = stmt.executeQuery();		
+//				System.out.println("6");
+//				if result exists Than
+				if(rst.next()) {
+//					System.out.println("7");
+//				checking if the ResultSet has the same email address
+					if(rst.getString("email").contentEquals(email)){
+						return true;	//if yes then sending True as there is a match				
+					}else {
+//						System.out.println("8");
+					return false; //no existing mail
+					}
+				}else {
+					return false; //no resulted fetched
+				}
+		} 
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		finally {
+			try {
+				stmt.close();
+			}
+			catch(SQLException s)
+			{
+				s.printStackTrace();
+			}
+		}
+		return false;
+	}
+
+	public static int addAdmin(String username, String email, String phone, String password, Connection conn) {
+		PreparedStatement stmt = null;	
+		try {
+			
+//			sql for data insertion
+			stmt =conn.prepareStatement("insert into admin (name, email, phone, password) values(?,?,?,?)");
+			stmt.setString(1, username);
+			stmt.setString(2, email);
+			stmt.setString(3, phone);
+			stmt.setString(4, password);
+		
+//			executind query
+			int query_success = stmt.executeUpdate();
+			
+//		sending boolean true is the statement executed successfuly
+			return query_success;
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		finally {
+			try {
+				stmt.close();
+			}
+			catch(SQLException s)
+			{
+				s.printStackTrace();
+			}
+		}
+		return 0;
+	}
+
+	
 
 
 

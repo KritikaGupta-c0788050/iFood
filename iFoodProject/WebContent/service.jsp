@@ -61,7 +61,7 @@
         <h6 class="text-center top-title mb-2">Work and Offers</h6>
         <h3 class="text-center title mb-3">Our Service</h3>
         <div class="title-wls-text text-center pt-lg-3 pt-2 mb-lg-5 mb-md-4 mb-sm-4 mb-3">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum </p>
+          <p>The Orchid Restaurant offers a wide variety of services to its clients </p>
         </div>
         <div class="row">
           <div class="col-lg-4 col-md-6 col-sm-6 service-grid-wthree">
@@ -71,7 +71,7 @@
               </div>
               <div class="ser-sevice-grid">
                 <h4 class="pb-3"><a style="color:inherit;"href="order.jsp">Online Order</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna</p>
+                <p>Order from the comfort of your home and come to eat at our place or get it home delivered.</p>
               </div>
             </div>
           </div>
@@ -82,7 +82,7 @@
               </div>
               <div class="ser-sevice-grid">
                 <h4 class="pb-3"><a style="color:inherit;"href="order.jsp">Home Delivery</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna</p>
+                <p>Now order from your home, we will get your meal to you within no time.</p>
               </div>
             </div>
           </div>
@@ -93,7 +93,7 @@
               </div>
               <div class="ser-sevice-grid">
                 <h4 class="pb-3"><a style="color:inherit;"href="menu.jsp">New menu</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna</p>
+                <p>Our menu is completely diverse like the communities and people living in Toronto.  </p>
               </div>
             </div>
           </div>
@@ -104,7 +104,7 @@
               </div>
               <div class="ser-sevice-grid">
                 <h4 class="pb-3"><a style="color:inherit;"href="recipe.jsp">Fresh Recipe</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna</p>
+                <p>All the recipe's are freshly prepared by our own chefs.</p>
               </div>
             </div>
           </div>
@@ -115,7 +115,7 @@
               </div>
               <div class="ser-sevice-grid">
                 <h4 class="pb-3"><a style="color:inherit;"href="gallery.jsp">Quality</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna</p>
+                <p>Orchid is determined to maintain its quality, we donot compromise!</p>
               </div>
             </div>
           </div>
@@ -126,7 +126,7 @@
               </div>
               <div class="ser-sevice-grid">
                 <h4 class="pb-3"><a style="color:inherit;"href="order.jsp">Best Price</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna</p>
+                <p>You will find weekly offers and offs at our restaurant, do offer and see!</p>
               </div>
             </div>
           </div>

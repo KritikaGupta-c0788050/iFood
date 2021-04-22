@@ -32,10 +32,10 @@
 <body>
 	
     <div class="main" style="padding: 20px 0;margin-top:8%; background-image:url(static/login/images/banner.jpg);">
-           <%   if(request.getParameter("Lmsg") != null){%>
+           <%   if(request.getAttribute("msg") != null){%>
    					 <div class="grid_3 grid_5 widget-shadow">
 						<div class="alert alert-warning" role="alert">			
-								<%= request.getParameter("Lmsg") %>
+								<%= request.getAttribute("msg") %>
 						</div>
 					</div>
 <%} %>
@@ -61,10 +61,14 @@
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="password" id="your_pass" placeholder="Password"/>
+                               
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                                                 
+                              <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                              
                             </div>
+                            <a href="forgot_pass">forgot password?</a>
                         </form>
                         <div class="social-login">
                             <span class="social-label">Or login with</span>

@@ -21,8 +21,8 @@ public class AddToCart extends HttpServlet{
 		String total = request.getParameter("amount");
 		String pImg = request.getParameter("img");
 //		onverting quantity into integer value
-		int num_total = Integer.parseInt(total);
-		int num_price = Integer.parseInt(price);
+		double num_total = Double.parseDouble(total);
+		double num_price = Double.parseDouble(price);
 		int quantity = 1;
 	
 //	checking if session variable is null that is there or creating one	
@@ -58,7 +58,7 @@ public class AddToCart extends HttpServlet{
 	}
 	
 //	Method to check if the product entered by user exists already
-	private Product findExistingProduct(String pName, int total, ArrayList<Product> productsInCart) {
+	private Product findExistingProduct(String pName, double total, ArrayList<Product> productsInCart) {
 //		iterator for the existing arrayList
 		Iterator<Product> p_it = productsInCart.iterator();
 		while(p_it.hasNext()) {
@@ -70,7 +70,7 @@ public class AddToCart extends HttpServlet{
 				
 				//System.out.println("Yes2");
 				int tmp_quantity = p_obj2.getQuantity();
-				int tmp_total = p_obj2.getTotal();
+				double tmp_total = p_obj2.getTotal();
 				p_obj2.setQuantity(tmp_quantity+1);
 				p_obj2.setTotal(tmp_total+total);
 				

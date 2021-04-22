@@ -112,7 +112,7 @@ String pasword = "";
         <h6 class="text-center top-title mb-2">Tastey Orders</h6>
         <h3 class="text-center title mb-3">Our Menu</h3>
         <div class="title-wls-text text-center pt-lg-3 pt-2 mb-lg-5 mb-md-4 mb-sm-4 mb-3">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum </p>
+          <p>You will find weekly offers and offs at our restaurant, do offer and see! </p>
         </div>
         <div class="row">
           <div class="col-lg-4 col-md-4">

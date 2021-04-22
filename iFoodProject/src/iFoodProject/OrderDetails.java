@@ -30,7 +30,7 @@ public class OrderDetails extends HttpServlet{
 				ArrayList<Product> productsInCart = (ArrayList<Product>) products;
 				ArrayList<String> names = new ArrayList<String>();
 				ArrayList<String> quantity = new ArrayList<String>();
-				int total = 0;
+				double total = 0;
 				String items = "";
 				String quantities = "";
 				
@@ -88,7 +88,7 @@ public class OrderDetails extends HttpServlet{
 					Customer cust = UsersTable.getUserInfo(email,conn);
 					String sent = UsersTable.sendOrder(items,quantities,total,cust.getName(),cust.getEmail(),newPhone,newAddress,conn);
 					if(sent != null) {
-						System.out.println("Success");
+//						System.out.println("Success");
 						request.setAttribute("ordertime" , sent);						
 						request.getRequestDispatcher("payment.jsp").forward(request, response);
 						return;

@@ -62,8 +62,9 @@
         <h6 class="text-center top-title mb-2">Frame Work</h6>
         <h3 class="text-center title mb-3">Our Gallery</h3>
         <div class="title-wls-text text-center pt-lg-3 pt-2 mb-lg-5 mb-md-4 mb-sm-4 mb-3">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum </p>
-        </div>
+          <p>We never hesitate in our support, and we never lose sight of our main mission: serving our clients with the best experience in our Restaurant.</p>
+        
+           </div>
         <div class="row gallery-info">
           <div class="col-lg-4 col-md-4 col-sm-4 gallery-img-grid p-0">
             <div class="gallery-grids">

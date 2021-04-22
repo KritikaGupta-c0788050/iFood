@@ -62,20 +62,20 @@
         <h6 class="text-center top-title mb-2">Delicious Taste</h6>
         <h3 class="text-center title mb-3">Our Recipe</h3>
         <div class="title-wls-text text-center pt-lg-3 pt-2 mb-lg-5 mb-md-4 mb-sm-4 mb-3">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum </p>
+          <p>All the recipe's are freshly prepared by our own chefs.You will find weekly offers and offs at our restaurant, do offer and see! </p>
         </div>
         <div class="row">
           <div class="col-lg-6 tasty-recipe-wthree">
-            <h4>Lorem ipsum dolor sit amet sed do eiusmod tempor incididunt ut labore et Lorem ipsum</h4>
-            <p class="pt-lg-4 pt-3">sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, eiusmod tempor incididunt ut labore et consectetur adipiscing sed do eiusmod tempor incididunt</p>
+            <h4>Hakka Noodles</h4>
+            <p class="pt-lg-4 pt-3">Hakka noodles is a Chinese preparation where boiled noodles are stir fried with sauces and vegetables or meats. A hakka noodle is made from unleavened dough( rice or wheat flour) that is cooked in a boiling liquid. Garnish with some chopped spring onion greens and serve hakka noodles hot!</p>
             <div class="list-of-menu pt-md-4 pt-lg-3">
               <ul>
-                <li>adipiscing</li>
-                <li>ipsum dolor</li>
-                <li>eiusmod tempor</li>
-                <li>sit amet</li>
-                <li>adipiscing</li>
-                <li>consectetur</li>
+                <li>Shredded Cabbage<li>
+                <li>SLiced Capsicum</li>
+                <li>Chopped spring onions</li>
+                <li>Soy sauce</li>
+                <li>Carrot juliennes</li>
+                <li>Boiled Noodles</li>
               </ul>
             </div>
             <div class="view-buttn pt-lg-4 pt-3">
@@ -91,15 +91,15 @@
             <img src="static/food/images/r2.jpg" alt="news image" class="img-fluid">
           </div>
           <div class="col-lg-6 tasty-recipe-wthree">
-            <h4>Lorem ipsum dolor sit amet sed do eiusmod tempor incididunt ut labore et Lorem ipsum</h4>
-            <p class="pt-lg-4 pt-3">sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, eiusmod tempor incididunt ut labore et consectetur adipiscing sed do eiusmod tempor incididunt</p>
+            <h4>Chinese Soup</h4>
+            <p class="pt-lg-4 pt-3">This Chinese Noodle Soup is one of my classic “back pocket” recipes because it’s so versatile and incredibly quick. Because people who cook all day for a living need quick dinners for real life – ask any chef!!</p>
             <div class="list-of-menu pt-md-4 pt-lg-3">
               <ul>
-                <li>adipiscing</li>
-                <li>ipsum dolor</li>
-                <li>eiusmod tempor</li>
-                <li>sit amet</li>
-                <li>adipiscing</li>
+                <li>Broth</li>
+                <li>Noodles</li>
+                <li>Toppings</li>
+                <li>Serve</li>
+                <li>Garlic and ginger</li>
                 <li>consectetur</li>
               </ul>
             </div>

@@ -69,8 +69,10 @@
           <!--//contact-map -->
           <div class="col-lg-6">
             <div class="address_mail_footer_grids ">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3539.812628729253!2d153.014155!3d-27.4750921!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b915a0835840a2f%3A0xdd5e3f5c208dc0e1!2sMelbourne+St%2C+South+Brisbane+QLD+4101%2C+Australia!5e0!3m2!1sen!2sin!4v1492257477691"></iframe>
-            </div>
+              <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3539.812628729253!2d153.014155!3d-27.4750921!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b915a0835840a2f%3A0xdd5e3f5c208dc0e1!2sMelbourne+St%2C+South+Brisbane+QLD+4101%2C+Australia!5e0!3m2!1sen!2sin!4v1492257477691"></iframe>
+           -->  
+           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5773.5809738620155!2d-79.37365657324342!3d43.65252717923449!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4cb30aa71dde5%3A0x6aeaef32132daa7d!2sOld%20Town%2C%20Toronto%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sae!4v1619064045648!5m2!1sen!2sae" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+           </div>
           </div>
           <!--contact-map -->
           <div class="col-lg-6 contact-form-txt">
@@ -103,13 +105,13 @@
         <div class="row mt-lg-4 mt-3">
           <div class="contact-list-grid col-lg-3 col-md-6 col-sm-6">
             <h4>Branch 1</h4>
-            <p class="pt-2">Melbourne St,South </p>
-            <p>Birbane 4101 Austraila</p>
+            <p class="pt-2">Oldtown, Old Toronto </p>
+            <p>Ontario, Canada</p>
           </div>
           <div class="contact-list-grid col-lg-3 col-md-6 col-sm-6">
             <h4>Branch 2</h4>
-            <p class="pt-2">Melbourne St,South </p>
-            <p>Birbane 4101 Austraila</p>
+            <p class="pt-2">Downtown, Toronto </p>
+            <p>Ontario, Canada</p>
           </div>
           <div class="contact-list-grid col-lg-3 col-md-6 col-sm-6">
             <h4>Phone</h4>
@@ -118,9 +120,9 @@
           </div>
           <div class="contact-list-grid col-lg-3 col-md-6 col-sm-6">
             <h4>Email</h4>
-            <p class="pt-2"><a href="mailto:info@example.com">info@example1.com</a> 
+            <p class="pt-2"><a href="mailto:info@example.com">orchid@xyz.com</a> 
             </p>
-            <p class="pt-2"><a href="mailto:info@example.com">info@example.com</a> 
+            <p class="pt-2"><a href="mailto:info@example.com">orchidhelp@xyz.com</a> 
             </p>
           </div>
         </div>

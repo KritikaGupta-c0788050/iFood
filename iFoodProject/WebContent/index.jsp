@@ -186,6 +186,14 @@
 		</div>
 	</div>
 	<% } %>
+	
+	    <%if(request.getAttribute("msg") != null) {%>
+    <div class="grid_3 grid_5 widget-shadow">
+		<div class="alert alert-success" role="alert">			
+			<%= request.getAttribute("msg") %>
+		</div>
+	</div>
+	<% }%>
 
 	 <%if(request.getAttribute("pay_msg") != null) {%>
     		<div class="grid_3 grid_5 widget-shadow">
@@ -199,7 +207,7 @@
         <h6 class="text-center top-title mb-2">History</h6>
         <h3 class="text-center title mb-3">About Us</h3>
         <div class="title-wls-text text-center pt-lg-3 pt-2 mb-lg-5 mb-md-4 mb-sm-4 mb-3">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum </p>
+          <p>We never hesitate in our support, and we never lose sight of our main mission: serving our clients with the best experience in our Restaurant. Our job is to always make it comfortable for guests to stay with us and we strive not only to meet their needs but also to exceed their expectations.</p>
         </div>
       </div>
       <div class="container-fluid pb-lg-5 pb-md-4 pb-sm-4 pb-3">
@@ -219,192 +227,21 @@
         </div>
         <div class="pt-lg-5 pt-md-4 pt-3 text-center about-two-grids">
           <div class="about-para-txt">
-            <p>sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, eiusmod tempor incididunt ut labore et consectetur adipiscing sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, eiusmod tempor incididunt ut labore et consectetur adipiscing</p>
-            <p class="mt-2">sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, eiusmod tempor incididunt ut labore et consectetur adipiscing sed do eiusmod</p>
+            <p>The Restaurant is centrally located on top of the hill with mesmerizing view of the Creek and stunning scenery of Oldtown, Toronto and the beaches around.</p>
+            <p class="mt-2">With its unique and convenient location, the place offers easy access to all the must-see destination</p>
           </div>
         </div>
       </div>
     </section>
     <!--//about -->
     <!--menu-order-->
-    <section class="menu-order py-lg-4 py-md-3 py-sm-3 py-3" id="menu-order">
-      <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
-        <h6 class="text-center top-title mb-2">Tastey Orders</h6>
-        <h3 class="text-center title mb-3">Our Menu</h3>
-        <div class="title-wls-text text-center pt-lg-3 pt-2 mb-lg-5 mb-md-4 mb-sm-4 mb-3">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum </p>
-        </div>
-        <div class="row">
-          <div class="col-lg-4 col-md-4">
-            <div class="wls-hours-list">
-              <ul>
-                <li class="d-flex">Rigatoni Pasta<span class="time ml-auto"> $30</span></li>
-                <li class="d-flex">Soup Pasta<span class="time ml-auto">$12</span></li>
-                <li class="d-flex">Ribbon Pasta<span class="time ml-auto">$6</span></li>
-                <li class="d-flex">Tubular Pasta<span class="time ml-auto">$22</span></li>
-                <li class="d-flex">Penne Pasta<span class="time ml-auto">$15</span></li>
-                <li class="d-flex">Shaped Pasta   <span class="time ml-auto">$18</span></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-4">
-            <div class="wls-hours-list">
-              <ul>
-                <li class="d-flex">Rigatoni Pasta<span class="time ml-auto"> $30</span></li>
-                <li class="d-flex">Soup Pasta<span class="time ml-auto">$12</span></li>
-                <li class="d-flex">Ribbon Pasta<span class="time ml-auto">$6</span></li>
-                <li class="d-flex">Tubular Pasta<span class="time ml-auto">$22</span></li>
-                <li class="d-flex">Penne Pasta<span class="time ml-auto">$15</span></li>
-                <li class="d-flex">Shaped Pasta   <span class="time ml-auto">$18</span></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-4">
-            <div class="wls-hours-list">
-              <ul>
-                <li class="d-flex">Rigatoni Pasta<span class="time ml-auto"> $30</span></li>
-                <li class="d-flex">Soup Pasta<span class="time ml-auto">$12</span></li>
-                <li class="d-flex">Ribbon Pasta<span class="time ml-auto">$6</span></li>
-                <li class="d-flex">Tubular Pasta<span class="time ml-auto">$22</span></li>
-                <li class="d-flex">Penne Pasta<span class="time ml-auto">$15</span></li>
-                <li class="d-flex">Shaped Pasta   <span class="time ml-auto">$18</span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+  
     <!--//menu-order -->
     <!-- service -->
-    <section class="service py-lg-4 py-md-3 py-sm-3 py-3" id="service">
-      <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
-        <h6 class="text-center top-title mb-2">Work & Offers</h6>
-        <h3 class="text-center title mb-3">Our Service</h3>
-        <div class="title-wls-text text-center pt-lg-3 pt-2 mb-lg-5 mb-md-4 mb-sm-4 mb-3">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum </p>
-        </div>
-        <div class="row">
-          <div class="col-lg-4 col-md-6 col-sm-6 service-grid-wthree">
-            <div class="ser-fashion-grid">
-              <div class="about-icon mb-md-4 mb-3">
-                <span class="fa fa-laptop" aria-hidden="true"></span>
-              </div>
-              <div class="ser-sevice-grid">
-                <h4 class="pb-3">Online Order </h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-6 service-grid-wthree ">
-            <div class="ser-fashion-grid">
-              <div class="about-icon mb-md-4 mb-3">
-                <span class="fa fa-home" aria-hidden="true"></span>
-              </div>
-              <div class="ser-sevice-grid">
-                <h4 class="pb-3">Home Delivery</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-6 service-grid-wthree">
-            <div class="ser-fashion-grid">
-              <div class="about-icon mb-md-4 mb-3">
-                <span class="fa fa-bars" aria-hidden="true"></span>
-              </div>
-              <div class="ser-sevice-grid">
-                <h4 class="pb-3">New menu</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-6 mt-lg-5 mt-md-4 mt-3 service-grid-wthree ">
-            <div class="ser-fashion-grid">
-              <div class="about-icon mb-md-4 mb-3">
-                <span class="fa fa-bookmark" aria-hidden="true"></span>
-              </div>
-              <div class="ser-sevice-grid">
-                <h4 class="pb-3">Fresh Recipe</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-6 mt-lg-5 mt-md-4 mt-3 service-grid-wthree">
-            <div class="ser-fashion-grid">
-              <div class="about-icon mb-md-4 mb-3">
-                <span class="fa fa-thumbs-o-up" aria-hidden="true"></span>
-              </div>
-              <div class="ser-sevice-grid">
-                <h4 class="pb-3">Quality</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-6 mt-lg-5 mt-md-4 mt-3 service-grid-wthree">
-            <div class="ser-fashion-grid">
-              <div class="about-icon mb-md-4 mb-3">
-                <span class="fa fa-money" aria-hidden="true"></span>
-              </div>
-              <div class="ser-sevice-grid">
-                <h4 class="pb-3">Best Price</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+
     <!--//service -->
     <!-- prices  -->
-    <section class="price py-lg-4 py-md-3 py-sm-3 py-3" id="price">
-      <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
-        <h6 class="text-center top-title mb-2">Rates & Prices</h6>
-        <h3 class="text-center title mb-3">Our Service</h3>
-        <div class="title-wls-text text-center pt-lg-3 pt-2 mb-lg-5 mb-md-4 mb-sm-4 mb-3">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum </p>
-        </div>
-        <div class="row w3pvt-service-grids-all text-center">
-          <div class="col-lg-4 col-md-4 table-tab-table">
-            <div class="table-wthree-price">
-              <div class="table-sub-title text-center">
-                <h4>Gold</h4>
-                <h5 class="pt-lg-4 pt-md-4 pt-3"><span>$</span>50</h5>
-                <h6 class="pt-3">Per Month</h6>
-                <p class="pt-lg-5 pt-md-4 pt-3"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum</p>
-              </div>
-              <div class="view-buttn text-center pt-lg-4 pt-3">
-                <a href="contact.jsp" class="btn ">Book Here</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-4 table-tab-table">
-            <div class="table-wthree-price">
-              <div class="table-sub-title text-center">
-                <h4>Platium</h4>
-                <h5 class="pt-lg-4 pt-md-4 pt-3"><span>$</span>60</h5>
-                <h6 class="pt-3">Per Month</h6>
-                <p class="pt-lg-5 pt-md-4 pt-3"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum</p>
-              </div>
-              <div class="view-buttn text-center pt-lg-4 pt-3">
-                <a href="contact.jsp" class="btn ">Book Here</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-4 table-tab-table">
-            <div class="table-wthree-price">
-              <div class="table-sub-title text-center">
-                <h4>Sliver</h4>
-                <h5 class="pt-lg-4 pt-md-4 pt-3"><span>$</span>70</h5>
-                <h6 class="pt-3">Per Month</h6>
-                <p class="pt-lg-5 pt-md-4 pt-3"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum</p>
-              </div>
-              <div class="view-buttn text-center pt-lg-4 pt-3">
-                <a href="contact.jsp" class="btn ">Book Here</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+
     <!--//prices -->
     <!-- Clients  -->
     <section class="clients py-lg-4 py-md-3 py-sm-3 py-3" id="clients">
@@ -412,7 +249,7 @@
         <h6 class="text-center top-title mb-2">Golden Words</h6>
         <h3 class="text-center title mb-3">Our Clients</h3>
         <div class="title-wls-text text-center pt-lg-3 pt-2 mb-lg-5 mb-md-4 mb-sm-4 mb-3">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum </p>
+        <!--   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum </p> -->
         </div>
         <div class="row pt-lg-5 pt-md-4 pt-3">
           <div class="col-lg-4 clients-client">
@@ -421,10 +258,9 @@
                 <span class="fa fa-quote-right" aria-hidden="true"></span>
               </div>
               <div class="clients-info">
-                <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet,
+                <p >Without doubt one of the favorite places we stayed during our time! We were warmly welcomed by the staff with drink, The staff was extremely friendly. 
                 </p>
-                <h4 class="pt-2 text-right">Jony Joe</h4>
+                <h4 class="pt-2 text-right">Ankur Trivedi</h4>
               </div>
             </div>
           </div>
@@ -434,10 +270,9 @@
                 <span class="fa fa-quote-right" aria-hidden="true"></span>
               </div>
               <div class="clients-info">
-                <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet,
+                <p >We went all inclusive and were able to eat and drink there until 6. We also enjoyed the pool. All the staff was friendly and helpful too.
                 </p>
-                <h4 class="pt-2 text-right">Max Joe</h4>
+                <h4 class="pt-2 text-right">Max Phill</h4>
               </div>
             </div>
           </div>
@@ -447,10 +282,9 @@
                 <span class="fa fa-quote-right" aria-hidden="true"></span>
               </div>
               <div class="clients-info">
-                <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet,
+                <p >The staff was nice, kind and helpful. The place is okay. I enjoyed my food and the environment there. I completely recommend it!
                 </p>
-                <h4 class="pt-2 text-right">Kely Joe</h4>
+                <h4 class="pt-2 text-right">Kely Jenner</h4>
               </div>
             </div>
           </div>
