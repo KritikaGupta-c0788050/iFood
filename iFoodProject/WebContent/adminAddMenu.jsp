@@ -126,7 +126,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 									<select name="token" id="selector1" class="form-control1">
 										<option value="-1"></option>
 										<option value="1">Food</option>
-										<option value="2">Desert</option>
+										<option value="2">Dessert</option>
 										<option value="3">Drink</option>
 									</select>
 									</div>

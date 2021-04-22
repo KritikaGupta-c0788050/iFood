@@ -14,11 +14,29 @@
 
     <!-- Main css -->
     <link rel="stylesheet" href="static/login/css/style.css">
+    <!--//meta tags ends here-->
+    <!--booststrap-->
+    <link href="static/food/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="static/food/css/font-awesome.min.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!--stylesheets-->
+    <link href="static/food/css/style.css" rel='stylesheet' type='text/css' media="all">
+    <!--//stylesheets-->
+    <link href="//fonts.googleapis.com/css?family=Oswald:400,500,600,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
 </head>
 <body>
 
     <div class="main" style="padding: 20px 0;margin-top:3%; background-image:url(static/login/images/banner.jpg);">
-
+ <%   if(request.getAttribute("msg") != null){%>
+   					 <div class="grid_3 grid_5 widget-shadow">
+						<div class="alert alert-warning" role="alert">			
+								<%= request.getAttribute("msg") %>
+						</div>
+					</div>
+<%} %>
         <!-- Sign up form -->
         <section class="signup">
             <div class="container">

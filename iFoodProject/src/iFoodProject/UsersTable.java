@@ -205,7 +205,7 @@ public class UsersTable {
 		try {
 			stmt =conn.prepareStatement("SELECT food, price FROM menu");
 			result = stmt.executeQuery();
-			System.out.println("Success");
+//			System.out.println("Success");
 			while(result.next()) {
 				Food food_obj = new Food();
 				
@@ -405,7 +405,7 @@ public class UsersTable {
 			return list_order;
 		} 
 		catch(SQLException e) {
-			System.out.print("Oops");
+//			System.out.print("Oops");
 			e.printStackTrace();
 		}
 		
@@ -521,7 +521,7 @@ public class UsersTable {
 			return list_order;
 		} 
 		catch(SQLException e) {
-			System.out.print("Oops");
+//			System.out.print("Oops");
 			e.printStackTrace();
 		}
 		
@@ -694,10 +694,10 @@ public class UsersTable {
 	}
 
 	public static String passwordRecovery(String email, Connection conn) {
-//		System.out.println(usermail+password);
+		
 		PreparedStatement stmt = null;
 		ResultSet rst = null;
-//		System.out.print("All Good1");
+
 		try {
 //			Select statement to find the user's login credentials in database if exists
 			stmt =conn.prepareStatement("Select password from register where email = ?");
@@ -706,10 +706,13 @@ public class UsersTable {
 			
 //			if the query has the resultset
 			if(rst.next()) {
+				
 				return rst.getString("password");
 				
 			}else {
+			
 				return null;	// if there is no resultset in that case too it sends false
+				
 			}
 		} 
 		catch(SQLException e) {

@@ -1731,10 +1731,10 @@ form.search-form {
     margin: 0em 0em 1.5em 0em;
 }
 .login-page input.user {
-    background: url(../images/user.png)no-repeat 8px 16px #fff;
+    background: url(static/admin/user.png)no-repeat 8px 16px #fff;
 }
 .login-page input.lock {
-    background: url(../images/lock.png)no-repeat 8px 16px #fff;
+    background: url(static/admin/lock.png)no-repeat 8px 16px #fff;
 }
 .login-page label.checkbox {
     margin: 0 0 0 1.3em;
@@ -1774,7 +1774,7 @@ form.search-form {
     outline: none;
     cursor: pointer;
     color: #fff;
-    background: #F2B33F;
+    background: #629aa9;
     width: 40%;
     padding: .6em 1em;
     font-size: 1em;

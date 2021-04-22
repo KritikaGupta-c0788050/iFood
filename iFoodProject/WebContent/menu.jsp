@@ -138,7 +138,7 @@ String pasword = "";
          <div class="col-lg-4 col-md-4">
             <div class="wls-hours-list">
               <ul>
-              <li class="d-flex" style="color:#40cdea;font-size:18px;font-weight:bold;">Desert</li>
+              <li class="d-flex" style="color:#40cdea;font-size:18px;font-weight:bold;">Dessert</li>
                 <%while(r_d.next()) { %>
                 <li class="d-flex"><%=r_d.getString("food") %><span class="time ml-auto"> $<%=r_d.getString("price") %></span></li>
              <%} %>

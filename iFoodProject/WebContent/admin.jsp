@@ -81,7 +81,7 @@ String pasword = "";
             <a class="nav-link" href="adminAddMenu.jsp">Add New Menu</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
               <a class="dropdown-item" href="adminRegister.jsp">Add new admin</a>
               <a class="dropdown-item" href="adminLogout">Logout</a>
@@ -96,7 +96,7 @@ String pasword = "";
     <main role="main">
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
+      <div class="jumbotron" style="background-image:url(static/food/images/b2.jpg);">
         <div class="container">
           <h1 class="display-3">Orchid Restaurant</h1>
           <p>Welcome Admin</p>

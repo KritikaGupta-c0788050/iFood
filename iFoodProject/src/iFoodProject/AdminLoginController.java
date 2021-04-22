@@ -27,7 +27,7 @@ public class AdminLoginController extends HttpServlet{
 		if(permit) {	//if correct letting in
 //			System.out.println("2");
 			if(request.getSession().getAttribute("adminlogin")==null) {
-				System.out.println("3");
+//				System.out.println("3");
 				request.getSession().setAttribute("adminlogin", email);
 				response.sendRedirect("admin.jsp");
 			}else {

@@ -23,28 +23,28 @@ public class AdminRegistrationController extends HttpServlet{
 		String password = request.getParameter("pass");
 		String rePassword = request.getParameter("re_pass");
 		
-		System.out.println("1");
+//		System.out.println("1");
 //		checking if password and rePassword have save values
 		if(password.equals(rePassword)) {
-			System.out.println("2");
+//			System.out.println("2");
 //			connection variable
 			Connection con = DbConnection.getDbConnection("mysql");
-			System.out.println("3");
+//			System.out.println("3");
 //			if user is new that is mail donot exist
 			if(!UsersTable.adminExistingMail(email,con)){
-				System.out.println("9");
+//				System.out.println("9");
 //				Inserting user details in database
 				int query_result = UsersTable.addAdmin(username, email, phone, password, con);
 //				if inserted 
 				if(query_result>0) {
-					System.out.println("10");
+//					System.out.println("10");
 //					sending email to the user for their registeration success
 					String subject ="iFood Registration Successful";
 					String message ="Your registration with iFood as admin is successful with the credentials: \n email: "+email+" and password: "+password;
 					
 					String [] recepients =new String[]{email};
 					new SendEmailFunctionality().sendMail(recepients, recepients, subject, message);
-					System.out.println("11");
+//					System.out.println("11");
 					request.setAttribute("msg" , "New admin account created successfuly.");		
 					response.sendRedirect("admin.jsp");
 				}else { //else

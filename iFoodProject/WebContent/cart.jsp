@@ -67,11 +67,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="cart">
    <div class="cart-top">
    	  <div class="cart-experience">
-   	  	 <h4>Shopping Cart Experience</h4>
+   	  	 <h4>Your Cart</h4>
    	  </div>
    	  <div class="cart-login">
    	  	 <div class="cart-login-img">
-   	  	 	<img src="static/cart/images/loggin_man.png">
+   	  	 	<!-- <img src="static/cart/images/loggin_man.png"> -->
    	  	 </div>
    	  	 <div class="cart-login-text">
    	  	 	<!-- <h5>Logged in as</h5> -->

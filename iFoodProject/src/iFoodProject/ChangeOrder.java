@@ -33,7 +33,7 @@ public class ChangeOrder extends HttpServlet{
 		if(rev_btn != null && !(review.isEmpty())) {
 			int rstatus = UsersTable.addReview(email, items, cost, orderby, phone, address, payment_status, order_time, order_status,review, con);
 			if(rstatus > 0) {
-				String msg="Review updated. We will always to reach your expectations.";
+				String msg="Review updated. We will always try to reach your expectations.";
 				request.setAttribute("msg" , msg);						
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}else {

@@ -28,6 +28,7 @@ public class ForgotPassword extends HttpServlet {
 		
 //		Checking if the user credentials are correct
 		String str_pass = UsersTable.passwordRecovery(email, con);
+		
 		if(str_pass != null) {	//if correct letting in
 //			sending email to the user for their registeration success
 			String subject ="iFood Password Recovery";
@@ -36,13 +37,14 @@ public class ForgotPassword extends HttpServlet {
 			String [] recepients =new String[]{email};
 			new SendEmailFunctionality().sendMail(recepients, recepients, subject, message);
 			request.setAttribute("msg" , "Your login credentials are sent to your registered mail, please check and login");		
-			response.sendRedirect("login.jsp");
+//			response.sendRedirect("login.jsp");
+			request.getRequestDispatcher("login.jsp").forward(request, response);
 			
 			}else {
 				request.setAttribute("msg" , "No such user exist, please register.");		
-				response.sendRedirect("Register.jsp");
+				request.getRequestDispatcher("Register.jsp").forward(request, response);;
 			}
-
+	
 	}
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
